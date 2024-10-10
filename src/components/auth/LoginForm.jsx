@@ -18,6 +18,7 @@ const LoginForm = () => {
       .email("Lütfen geçerli bir email giriniz.")
       .required("Email zorunludur."),
   });
+
   return (
     <Formik
       initialValues={{ email: "", password: "" }}

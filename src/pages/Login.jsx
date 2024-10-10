@@ -30,7 +30,7 @@ const Login = () => {
           <Typography variant="h4" align="center" mb={4} color="green">
             Login
           </Typography>
-          //!LOGİN FORM
+          {/* LOGİN FORM */}
           <LoginForm />
           <Box sx={{ textAlign: "center", mt: 2 }}>
             <Link to="/register">Do you have not an account?</Link>
