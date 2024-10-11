@@ -5,6 +5,7 @@ import { purple } from "@mui/material/colors";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         {/* <NewBlog /> */}
-        <About/>
+        {/* <About/> */}
+        <Dashboard/>
       </ThemeProvider>
     </>
   );
