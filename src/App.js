@@ -22,8 +22,10 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
+        {/* <Login/> */}
+        <Register/>
         {/* <NewBlog /> */}
-        <About/>
+        {/* <About/> */}
       </ThemeProvider>
     </>
   );
