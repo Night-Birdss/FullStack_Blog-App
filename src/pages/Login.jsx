@@ -27,7 +27,7 @@ const Login = () => {
           >
             <PersonIcon />
           </Avatar>
-          <Typography variant="h4" align="center" mb={4} color="green">
+          <Typography variant="h4" align="center" mb={4} color="primary">
             Login
           </Typography>
           {/* LOGİN FORM */}
