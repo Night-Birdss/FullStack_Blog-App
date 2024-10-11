@@ -2,6 +2,8 @@ import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
 import AppRouter from "./router/AppRouter";
+import { Provider } from "react-redux";
+import store from "./app/store";
 
 function App() {
   const theme = createTheme({
@@ -18,7 +20,9 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <AppRouter />
+        <Provider store={store}>
+          <AppRouter />
+        </Provider>
       </ThemeProvider>
     </>
   );
