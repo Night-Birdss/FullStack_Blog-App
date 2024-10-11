@@ -8,14 +8,15 @@ const useAuthCalls = () => {
   const dispatch = useDispatch();
 
   const login = async (userData) => {
+    console.log(userData);
     try {
       const { data } = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/auth/login`,
+        `${process.env.REACT_APP_BASE_URL}auth/login`,
         userData
       );
+      console.log(data);
       dispatch(loginSuccess(data));
       navigate("/");
-      console.log(data);
     } catch (error) {
       console.log(error);
     }

@@ -15,7 +15,6 @@ const authSlice = createSlice({
     registerSuccess: (state, { payload }) => {
       state.token = payload.token;
       state.username = payload.data.username;
-      state.loading = false;
     },
     // logoutSuccess: (state) => {
     //   state.token = "";
