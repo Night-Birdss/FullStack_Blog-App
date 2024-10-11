@@ -1,8 +1,11 @@
 import { object, string } from "yup";
 import { Form, Formik } from "formik";
 import { Box, Button, TextField } from "@mui/material";
+import useAuthCalls from "../../hooks/useAuthCalls";
 
 const LoginForm = () => {
+  const { login } = useAuthCalls();
+
   const loginSchema = object({
     password: string()
       .required("Şifre zorunludur.")
@@ -24,6 +27,7 @@ const LoginForm = () => {
       initialValues={{ email: "", password: "" }}
       validationSchema={loginSchema}
       onSubmit={(values, actions) => {
+        login(values);
         actions.resetForm();
         actions.setSubmitting(false);
       }}
