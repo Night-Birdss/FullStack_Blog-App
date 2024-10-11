@@ -2,6 +2,8 @@
 
 - list all branches : `git branch`
 - create a branch and chnage branch : `git checkout - b <branchName>`
+
+# bu satir lee branchinda yazildi
 - pull all changes for branch : `git fetch -p`
 - merge branches : `  git merge <branchName>`
 
