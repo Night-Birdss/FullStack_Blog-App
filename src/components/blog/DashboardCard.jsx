@@ -7,36 +7,52 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Box } from "@mui/material";
+import useBlogCalls from "../../hooks/useBlogCalls";
+import { useEffect } from "react";
 
-export default function DashboardCard(Dashboard) {
+export default function DashboardCard({ blog }) {
+  const { getSingleBlog } = useBlogCalls();
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         alt="Porsche"
         height="140"
-        image={Dashboard.image}
+        image={blog.image}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {Dashboard.title}
+          {blog.title}
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{
+            color: "text.secondary",
+            display: "-webkit-box",
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: 3,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {blog.content}
         </Typography>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>
-        {Dashboard.content}
-        </Typography>
-        <Typography variant="body2" sx={{ color: "text.secondary",}}>
-        Published Date : {Dashboard.isPublis}
+          Published Date : {blog.isPublish}
         </Typography>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box>
           <FavoriteIcon />
           <ChatBubbleOutlineIcon />
-          <RemoveRedEyeIcon/>
+          <RemoveRedEyeIcon />
         </Box>
-        <Button size="small">Read More</Button>
+        <Button size="small" onClick={() => getSingleBlog(blog._id)}>
+          Read More
+        </Button>
       </CardActions>
     </Card>
   );

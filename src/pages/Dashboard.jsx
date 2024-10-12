@@ -1,23 +1,29 @@
 import React, { useEffect } from "react";
-import DashboardCard from "../components/blog/card";
-import useBlogCalls from "..//hooks/useBlogCalls"
-
-
-
+import useBlogCalls from "../hooks/useBlogCalls";
+import DashboardCard from "../components/blog/DashboardCard";
+import { useSelector } from "react-redux";
+import Grid from "@mui/material/Grid";
 const Dashboard = () => {
-  
+  const { blogs } = useSelector((state) => state.blog);
+  console.log(blogs);
 
-  
-const {getİnfos} = useBlogCalls()
+  const { getBlogs } = useBlogCalls();
 
   //?Sayfa yüklendikten sonra blogları getir
   useEffect(() => {
-    getİnfos();
+    getBlogs();
   }, []);
 
   return (
     <div>
-      <DashboardCard />
+      <Grid container justifyContent={"center"} gap={2} >
+        {blogs?.map((blog, index) => (
+          <Grid item key={index}>
+            <DashboardCard key={index} blog={blog} />
+          </Grid>
+        ))}
+      </Grid>
+      ;
     </div>
   );
 };
