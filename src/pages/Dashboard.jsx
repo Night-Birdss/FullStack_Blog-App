@@ -1,9 +1,14 @@
 import React, { useEffect } from "react";
 import DashboardCard from "../components/blog/card";
-import useBlogCalls from "../hooks/useBlogCalls";
+import useBlogCalls from "..//hooks/useBlogCalls"
+
+
 
 const Dashboard = () => {
-  const { getİnfos } = useBlogCalls();
+  
+
+  
+const {getİnfos} = useBlogCalls()
 
   //?Sayfa yüklendikten sonra blogları getir
   useEffect(() => {

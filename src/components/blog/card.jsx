@@ -27,7 +27,7 @@ export default function DashboardCard(Dashboard) {
         {Dashboard.content}
         </Typography>
         <Typography variant="body2" sx={{ color: "text.secondary",}}>
-        Published Date : {Dashboard.isPublish}
+        Published Date : {Dashboard.isPublis}
         </Typography>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
