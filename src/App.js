@@ -1,18 +1,31 @@
-import React from 'react';
-import Navbar from './components/Navbar'; // Yolu kendi projenize göre ayarlayın
-import Footer from './components/Footer';
+import "./App.css";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { purple } from "@mui/material/colors";
+import AppRouter from "./router/AppRouter";
+import { Provider } from "react-redux";
+import store from "./app/store";
 
 function App() {
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: purple[500],
+      },
+      secondary: {
+        main: "#f44336",
+      },
+    },
+  });
+
   return (
-    <div>
-      <Navbar />
-      {/* Ana içerik alanı */}
-      <div style={{ minHeight: '80vh', padding: '20px', marginBottom: '50px' }}>
-        <h1>Welcome to the Blog App!</h1>
-      </div>
-      <Footer />
-    </div>
+    <>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <AppRouter />
+        </Provider>
+      </ThemeProvider>
+    </>
   );
 }
 
-export default App
+export default App;
