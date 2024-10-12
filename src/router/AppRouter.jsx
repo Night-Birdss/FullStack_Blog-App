@@ -8,7 +8,7 @@ import Dashboard from "../pages/Dashboard";
 import About from "../pages/About";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
-import NewBlog from "../pages/NewBlog";
+import Detail from "../pages/Detail";
 
 const AppRouter = () => {
   return (
@@ -18,7 +18,7 @@ const AppRouter = () => {
         <Route path="/about" element={<About />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/NewBlog" element={<NewBlog/>} />
+        <Route path="/detail" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );
