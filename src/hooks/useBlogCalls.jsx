@@ -26,7 +26,7 @@ const useBlogCalls = () => {
         headers: { Authorization: `Token ${token}` },
       });
       console.log({ data: data.data });
-      dispatch(getCategorySuccess({ data: data.data }));
+      dispatch(getCategorySuccess({data:data.data}));
     } catch (error) {
       console.log(error);
     }

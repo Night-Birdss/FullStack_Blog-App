@@ -21,7 +21,7 @@ export const blogSlice = createSlice({
   //   }
   reducers: {
     getCategorySuccess: (state, { payload }) => {
-      // console.log(payload)
+      console.log(payload)
       state.categories = payload.data;
     },
     getStatusSuccess: (state, { payload }) => {

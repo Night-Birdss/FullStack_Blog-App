@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import { MenuItem } from "@mui/material";
 import useBlogCalls from "../hooks/useBlogCalls";
 import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
@@ -10,9 +11,6 @@ const NewBlog = () => {
   const { getCategories } = useBlogCalls();
   const categories = useSelector((state) => state.category);
   console.log(categories);
-
-  
-
   useEffect(() => {
     getCategories();
   }, []);
@@ -60,7 +58,13 @@ const NewBlog = () => {
               label="Category"
               id="category-select"
               name="categoryId"
-            ></Select>
+            >
+              {categories?.map((category) => (
+                <MenuItem key={category.id} value={category.id}>
+                  {category.name}
+                </MenuItem>
+              ))}
+            </Select>
           </FormControl>
           <FormControl>
             <InputLabel variant="outlined" id="product-select-label" required >
@@ -72,7 +76,10 @@ const NewBlog = () => {
               id="status-select"
               name="statusId"
               required
-            ></Select>
+            >
+              <MenuItem value="Draft">Draft</MenuItem>
+              <MenuItem value="Published">Published</MenuItem>
+            </Select>
           </FormControl>
           <TextField
             label="Content"
