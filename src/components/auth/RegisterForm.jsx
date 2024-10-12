@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { Form, Formik } from "formik";
 import { object, string } from "yup";
+import useAuthCalls from "../../hooks/useAuthCalls";
 
 export const registerSchema = object({
   username: string()
@@ -33,6 +34,7 @@ export const registerSchema = object({
 });
 
 const RegisterForm = () => {
+  const { register } = useAuthCalls();
   return (
     <Formik
       initialValues={{
@@ -41,11 +43,13 @@ const RegisterForm = () => {
         lastName: "",
         email: "",
         image: "",
+        city: "",
         bio: "",
         password: "",
       }}
       validationSchema={registerSchema}
       onSubmit={(values, actions) => {
+        register(values);
         actions.resetForm();
         actions.setSubmitting(false);
       }}
