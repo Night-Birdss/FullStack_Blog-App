@@ -1,21 +1,16 @@
 import React, { useEffect } from "react";
 import DashboardCard from "../components/blog/card";
-import axios from "axios";
+import useBlogCalls from "../hooks/useBlogCalls"
+
+
 
 const Dashboard = () => {
-  const {token} = useSelector((state)=>state)
-  const getİnfos = async () => {
-    try {
-      const { data } = await axios(`${process.env.REACT_APP_BASE_URL}/blogs/`, {
-        headers: { Authorization: `Token ${token}` },
-      });
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  
 
-  //?Sayfa yüklendikten sonra firmaları getir
+  
+const {getİnfos} = useBlogCalls()
+
+  //?Sayfa yüklendikten sonra blogları getir
   useEffect(() => {
     getİnfos();
   }, []);
