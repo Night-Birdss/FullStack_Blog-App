@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategorySuccess, getStatusSuccess, getBlogSuccess, getSingleBlogSuccess } from "../features/blogSlice";
+import { getCategorySuccess, getBlogSuccess, getSingleBlogSuccess } from "../features/blogSlice";
 import { useNavigate } from "react-router-dom";
 
 const useBlogCalls = () => {
@@ -16,6 +16,17 @@ const useBlogCalls = () => {
       console.log({ data: data.data });
 
       dispatch(getBlogSuccess({ data: data.data }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getCategories = async () => {
+    try {
+      const { data } = await axios(`${process.env.REACT_APP_BASE_URL}categories/`, {
+        headers: { Authorization: `Token ${token}` },
+      });
+      console.log({ data: data.data });
+      dispatch(getCategorySuccess({ data: data.data }));
     } catch (error) {
       console.log(error);
     }
@@ -37,7 +48,7 @@ const useBlogCalls = () => {
     }
   };
 
-  return { getBlogs, getSingleBlog };
+  return { getCategories, getBlogs, getSingleBlog };
 };
 
 export default useBlogCalls;

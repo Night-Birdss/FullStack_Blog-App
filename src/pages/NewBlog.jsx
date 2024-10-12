@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import useBlogCalls from "../hooks/useBlogCalls";
+import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
 import { Select, InputLabel, FormControl } from "@mui/material";
 
 const NewBlog = () => {
+  const { getCategories } = useBlogCalls();
+  const categories = useSelector((state) => state.category);
+  console.log(categories);
+
+  
+
+  useEffect(() => {
+    getCategories();
+  }, []);
   return (
     <div>
       <Box
