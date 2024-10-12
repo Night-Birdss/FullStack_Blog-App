@@ -10,24 +10,24 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Box } from "@mui/material";
 
-export default function DashboardCard() {
+export default function DashboardCard(Dashboard) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         alt="Porsche"
         height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
+        image={Dashboard.image}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Porsche
+          {Dashboard.title}
         </Typography>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>
-        Once known just for its sports cars, Porsche now produces a wide variety of coupes, convertibles, SUVs and sedans.
+        {Dashboard.content}
         </Typography>
         <Typography variant="body2" sx={{ color: "text.secondary",}}>
-        Published Date : 24.01.2024 20:39:42
+        Published Date : {Dashboard.isPublish}
         </Typography>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
