@@ -8,6 +8,10 @@ import { Button } from "@mui/material";
 import { Select, InputLabel, FormControl } from "@mui/material";
 
 const NewBlog = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted");
+  };
   const { getCategories } = useBlogCalls();
   const categories = useSelector((state) => state.category);
   console.log(categories);
@@ -34,6 +38,7 @@ const NewBlog = () => {
         <Box
           sx={{ display: "flex", flexDirection: "column", gap: 2 }}
           component="form"
+          onSubmit={handleSubmit}
         >
           <TextField
             label="Title"
@@ -58,6 +63,7 @@ const NewBlog = () => {
               label="Category"
               id="category-select"
               name="categoryId"
+              value={""}
             >
               {categories?.map((category) => (
                 <MenuItem key={category.id} value={category.id}>
@@ -75,7 +81,7 @@ const NewBlog = () => {
               label="Status"
               id="status-select"
               name="statusId"
-              required
+              value={""}
             >
               <MenuItem value="Draft">Draft</MenuItem>
               <MenuItem value="Published">Published</MenuItem>
@@ -87,6 +93,8 @@ const NewBlog = () => {
             name="content"
             variant="outlined"
             required
+            multiline
+            rows={4}
           />
           <Button type="submit" variant="contained" size="large">
             NEW BLOG
