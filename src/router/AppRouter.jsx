@@ -9,6 +9,7 @@ import About from "../pages/About";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Detail from "../pages/Detail";
+import NewBlog from "../pages/NewBlog";
 
 const AppRouter = () => {
   return (
@@ -19,6 +20,7 @@ const AppRouter = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/detail" element={<Detail />} />
+        <Route path="/newBlog" element={<NewBlog />} />
       </Routes>
     </BrowserRouter>
   );

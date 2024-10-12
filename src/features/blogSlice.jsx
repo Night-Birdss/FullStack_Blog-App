@@ -22,10 +22,10 @@ export const blogSlice = createSlice({
   reducers: {
     getCategorySuccess: (state, { payload }) => {
       // console.log(payload)
-      state.categories = payload.category;
+      state.categories = payload.data;
     },
     getStatusSuccess: (state, { payload }) => {
-      state.status = payload.isPublish;
+      state.status = payload.data;
     },
     getBlogSuccess: (state, { payload }) => {
       state.blogs = payload.data;
