@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { getBlogSuccess, getSingleBlogSuccess } from "../features/blogSlice";
+import { getCategorySuccess, getStatusSuccess, getBlogSuccess, getSingleBlogSuccess } from "../features/blogSlice";
 import { useNavigate } from "react-router-dom";
 
 const useBlogCalls = () => {
