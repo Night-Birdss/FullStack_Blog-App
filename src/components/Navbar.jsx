@@ -12,13 +12,20 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { useNavigate } from 'react-router';
 
 const pages = ['DASHBOARD', 'NEW BLOG', 'ABOUT'];
-const settings = ['Login'];
+
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [settings, setSettings] = React.useState(['Login']);
+  const navigate = useNavigate(); // useNavigate hook'unu kullan
+  const handleLogin = () => {
+    setSettings(['My Blog', 'Profile', 'Logout']);
+    navigate('/login'); // Login sayfasına yönlendir
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -151,13 +158,14 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
+              
+                <MenuItem  onClick={handleCloseUserMenu}>
+                  <span onClick={handleLogin}>Login</span>
                 </MenuItem>
-              ))}
+              
             </Menu>
           </Box>
+          
         </Toolbar>
       </Container>
     </AppBar>
