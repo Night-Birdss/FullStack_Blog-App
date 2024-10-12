@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const blogSlice = createSlice({
   name: "blog",
   initialState: {
-    categories: [{}],
+    categories: [],
     status: [],
     blogs: [],
     comment: [],
@@ -20,7 +20,7 @@ export const blogSlice = createSlice({
   //     "isPublish": true
   //   }
   reducers: {
-    getCategorySuccess: (state, { payload }) => {
+    getCategorySuccess: (state, {payload}) => {
       console.log(payload)
       state.categories = payload.data;
     },
