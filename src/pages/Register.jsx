@@ -6,7 +6,10 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import RegisterForm from "../components/auth/RegisterForm";
 
+
 const Register = () => {
+ 
+
   return (
     <Container maxWidth="lg">
       <Grid
