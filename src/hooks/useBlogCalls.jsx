@@ -29,7 +29,7 @@ const useBlogCalls = () => {
       const { data } = await axios(`${process.env.REACT_APP_BASE_URL}categories/`, {
         headers: { Authorization: `Token ${token}` },
       });
-      console.log({data:data.data});
+      // console.log({data:data.data});
       dispatch(getCategorySuccess({data:data.data}));
     } catch (error) {
       console.log(error);

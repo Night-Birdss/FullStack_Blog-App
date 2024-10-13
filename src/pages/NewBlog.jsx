@@ -25,8 +25,9 @@ const NewBlog = () => {
   const categories = useSelector((state) => state.blog.categories);
   // console.log(categories);
   useEffect(() => {
-    getCategories();
-  }, [getCategories]);
+    getCategories()
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData({
@@ -35,13 +36,15 @@ const NewBlog = () => {
     });
   };
   const handleSubmit = (e) => {
-    e.preventDefault();
+        e.preventDefault();
+        console.log(data)
     if (data?.isPublish) {
-      postBlog("/", data);
-    } else {
-      postBlog("/my-blogs", data);
-    }
-    console.log("Form submitted");
+      postBlog(data);
+    } 
+  // else {
+  //     postBlog("/my-blogs", data);
+  //   }
+  //   console.log("Form submitted");
   };
 
   return (
