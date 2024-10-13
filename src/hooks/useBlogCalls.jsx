@@ -53,7 +53,6 @@ const useBlogCalls = () => {
       toastErrorNotify("Ekleme işlemi başarısız oldu.")
     }
   };
-
   const getSingleBlog = async (id) => {
     try {
       const { data } = await axios(

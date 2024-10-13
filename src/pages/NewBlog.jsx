@@ -40,8 +40,6 @@ const NewBlog = () => {
         e.preventDefault();
         console.log(data)
         postBlog(data);
-        
-  //   console.log("Form submitted");
   };
 
   return (
