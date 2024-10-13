@@ -9,11 +9,11 @@ import { Select, InputLabel, FormControl } from "@mui/material";
 
 const NewBlog = () => {
   const initialState = {
-    brandId: "",
-    firmId: "",
-    productId: "",
-    quantity: "",
-    price: "",
+    categoryId: "",
+    title: "",
+    content: "",
+    image: "",
+    isPublish: false,
   }
   const [data, setData] = useState(initialState)
   const handleChange = (e) => {
