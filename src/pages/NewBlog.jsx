@@ -11,10 +11,8 @@ import {
 } from "@mui/material";
 import useBlogCalls from "../hooks/useBlogCalls";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router";
 
 const NewBlog = () => {
-  const navigate=useNavigate()
   const { getCategories, postBlog } = useBlogCalls();
 
   const initialState = {
