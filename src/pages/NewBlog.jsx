@@ -13,7 +13,7 @@ const NewBlog = () => {
     console.log("Form submitted");
   };
   const { getCategories } = useBlogCalls();
-  const categories = useSelector((state) => state.category);
+  const categories = useSelector((state) => state.blog.categories);
   console.log(categories);
   useEffect(() => {
     getCategories();
