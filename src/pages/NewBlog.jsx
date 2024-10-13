@@ -38,9 +38,10 @@ const NewBlog = () => {
   const handleSubmit = (e) => {
         e.preventDefault();
         console.log(data)
-    if (data?.isPublish) {
-      postBlog(data);
-    } 
+        postBlog(data);
+    // if (data?.isPublish) {
+     
+    // } 
   // else {
   //     postBlog("/my-blogs", data);
   //   }

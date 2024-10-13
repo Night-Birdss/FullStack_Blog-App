@@ -9,10 +9,7 @@ const useBlogCalls = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const getBlogs = async () => {
-    if (!token) {
-      console.error("Token is missing. Unable to fetch blogs.");
-      return;
-    }
+    
     try {
       const { data } = await axios(`${process.env.REACT_APP_BASE_URL}blogs/`, {
         headers: { Authorization: `Token ${token}` },
