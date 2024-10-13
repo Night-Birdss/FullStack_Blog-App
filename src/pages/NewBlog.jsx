@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { MenuItem } from "@mui/material";
@@ -8,6 +8,18 @@ import { Button } from "@mui/material";
 import { Select, InputLabel, FormControl } from "@mui/material";
 
 const NewBlog = () => {
+  const initialState = {
+    brandId: "",
+    firmId: "",
+    productId: "",
+    quantity: "",
+    price: "",
+  }
+  const [data, setData] = useState(initialState)
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setData({ ...data, [name]: value })
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted");
@@ -45,6 +57,7 @@ const NewBlog = () => {
             id="title"
             name="title"
             variant="outlined"
+            onChange={handleChange}
             required
           />
           <TextField
@@ -52,6 +65,7 @@ const NewBlog = () => {
             id="image"
             variant="outlined"
             name="image"
+            onChange={handleChange}
             required
           />
           <FormControl>
@@ -64,6 +78,7 @@ const NewBlog = () => {
               id="category-select"
               name="categoryId"
               value={""}
+              onChange={handleChange}
             >
               {categories?.map((category) => (
                 <MenuItem key={category.id} value={category.id}>
@@ -81,6 +96,7 @@ const NewBlog = () => {
               label="Status"
               id="status-select"
               name="statusId"
+              onChange={handleChange}
               value={""}
             >
               <MenuItem value="Draft">Draft</MenuItem>
@@ -92,6 +108,7 @@ const NewBlog = () => {
             id="content"
             name="content"
             variant="outlined"
+            onChange={handleChange}
             required
             multiline
             rows={4}
