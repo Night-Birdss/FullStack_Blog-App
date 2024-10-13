@@ -23,10 +23,10 @@ const NewBlog = () => {
   };
   const [data, setData] = useState(initialState);
   const categories = useSelector((state) => state.blog.categories);
-  console.log(categories);
+  // console.log(categories);
   useEffect(() => {
     getCategories();
-  }, []);
+  }, [getCategories]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData({
