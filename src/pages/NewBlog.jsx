@@ -20,12 +20,19 @@ const NewBlog = () => {
   const [data, setData] = useState(initialState)
   const handleChange = (e) => {
     const { name, value } = e.target
-    setData({ ...data, [name]: value })
+    if (name === "isPublish") {
+      // 'Draft' için false, 'Published' için true
+      setData({ ...data, [name]: value === "Published" });
+    } else {
+      setData({ ...data, [name]: value });
+    }
   }
   const handleSubmit = (e) => {
     e.preventDefault();
     if(data?.isPublish){
       postBlog("/", data)
+    }else{
+      postBlog("/my-blogs", data)
     }
     console.log("Form submitted");
   };
@@ -103,7 +110,7 @@ const NewBlog = () => {
               id="status-select"
               name="isPublish"
               onChange={handleChange}
-              value={data?.isPublish}
+              value={data.isPublish ? "Published" : "Draft"}
             >
               <MenuItem value="Draft">Draft</MenuItem>
               <MenuItem value="Published">Published</MenuItem>

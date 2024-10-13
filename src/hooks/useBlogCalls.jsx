@@ -36,7 +36,7 @@ const useBlogCalls = () => {
     try {
       await axios.post(path, data);
       // toastSuccessNotify(`Veri ekleme başarılı.`)
-      getBlogs(path)
+      getBlogs()
     } catch (error) {
       console.log(error);
     }
