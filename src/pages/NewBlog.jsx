@@ -80,13 +80,13 @@ const NewBlog = () => {
             <Select
               labelId="category-select-label"
               label="Category"
-              id="category-select"
+              id="category-select-label"
               name="categoryId"
               value={data?.categoryId}
               onChange={handleChange}
             >
               {categories?.map((category) => (
-                <MenuItem key={category.id} value={category.id}>
+                <MenuItem key={category._id} value={category.name}>
                   {category.name}
                 </MenuItem>
               ))}
