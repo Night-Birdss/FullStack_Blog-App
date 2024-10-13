@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import {
   Box,
   TextField,
@@ -10,8 +11,10 @@ import {
 } from "@mui/material";
 import useBlogCalls from "../hooks/useBlogCalls";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 const NewBlog = () => {
+  const navigate=useNavigate()
   const { getCategories, postBlog } = useBlogCalls();
 
   const initialState = {
@@ -32,19 +35,14 @@ const NewBlog = () => {
     const { name, value } = e.target;
     setData({
       ...data,
-      [name]: name === "isPublish" ? value === "Published" : value,
+      [name]: value,
     });
   };
   const handleSubmit = (e) => {
         e.preventDefault();
         console.log(data)
         postBlog(data);
-    // if (data?.isPublish) {
-     
-    // } 
-  // else {
-  //     postBlog("/my-blogs", data);
-  //   }
+        
   //   console.log("Form submitted");
   };
 
@@ -118,11 +116,11 @@ const NewBlog = () => {
               id="status-select"
               name="isPublish"
               onChange={handleChange}
-              value={data.isPublish ? "Published" : "Draft"}
+              // value={data.isPublish ? "Published" : "Draft"}
             >
-              <MenuItem value="Draft">Please choose...</MenuItem>
-              <MenuItem value="Draft">Draft</MenuItem>
-              <MenuItem value="Published">Published</MenuItem>
+              <MenuItem selected>Please choose...</MenuItem>
+              <MenuItem value={false}> Draft</MenuItem>
+              <MenuItem value={true}>Published</MenuItem>
             </Select>
           </FormControl>
           <TextField

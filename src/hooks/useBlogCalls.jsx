@@ -33,11 +33,19 @@ const useBlogCalls = () => {
     }
   };
   const postBlog = async (data) => {
+    console.log(token)
     try {
-      await axios.post(`${process.env.REACT_APP_BASE_URL}blogs/`, data,{
+     const response= await axios.post(`${process.env.REACT_APP_BASE_URL}blogs/`, data,{
         headers: { Authorization: `Token ${token}` },
       });
-      // toastSuccessNotify(`Veri ekleme başarılı.`)
+      if(response.error){
+        throw new Error(response.message)
+      }else{
+        console.log("veri başarıyla eklendi")
+        navigate("/")
+// toastSuccessNotify(`Veri ekleme başarılı.`)
+      }
+      
       getBlogs()
     } catch (error) {
       console.log(error);
