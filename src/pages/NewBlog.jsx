@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import { MenuItem } from "@mui/material";
+import { Box, TextField, Button, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import useBlogCalls from "../hooks/useBlogCalls";
 import { useSelector } from "react-redux";
-import { Button } from "@mui/material";
-import { Select, InputLabel, FormControl } from "@mui/material";
 
 const NewBlog = () => {
   const { getCategories, postBlog } = useBlogCalls();
@@ -18,14 +14,14 @@ const NewBlog = () => {
     isPublish: true,
   }
   const [data, setData] = useState(initialState)
+  const categories = useSelector((state) => state.blog.categories);
+  console.log(categories);
+  useEffect(() => {
+    getCategories();
+  }, []);
   const handleChange = (e) => {
     const { name, value } = e.target
-    if (name === "isPublish") {
-      // 'Draft' için false, 'Published' için true
-      setData({ ...data, [name]: value === "Published" });
-    } else {
-      setData({ ...data, [name]: value });
-    }
+    setData({ ...data, [name]: value });
   }
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,11 +32,7 @@ const NewBlog = () => {
     }
     console.log("Form submitted");
   };
-    const categories = useSelector((state) => state.blog.categories);
-  console.log(categories);
-  useEffect(() => {
-    getCategories();
-  }, []);
+  
   return (
     <div>
       <Box
@@ -81,8 +73,8 @@ const NewBlog = () => {
             onChange={handleChange}
             required
           />
-          <FormControl>
-            <InputLabel variant="outlined" id="brand-select-label" required >
+          <FormControl >
+            <InputLabel variant="outlined" id="category-select-label" required >
               Category
             </InputLabel>
             <Select
