@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+// import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify"
 import { getCategorySuccess, getBlogSuccess, getSingleBlogSuccess } from "../features/blogSlice";
 import { useNavigate } from "react-router-dom";
 
@@ -31,6 +32,15 @@ const useBlogCalls = () => {
       console.log(error);
     }
   };
+  const postBlog = async (path,data) => {
+    try {
+      await axios.post(path, data);
+      // toastSuccessNotify(`Veri ekleme başarılı.`)
+      getBlogs(path)
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getSingleBlog = async (id) => {
     try {
@@ -47,8 +57,8 @@ const useBlogCalls = () => {
       console.log(error);
     }
   };
-
-  return { getCategories, getBlogs, getSingleBlog };
+  
+  return { getCategories, getBlogs, getSingleBlog,postBlog };
 };
 
 export default useBlogCalls;

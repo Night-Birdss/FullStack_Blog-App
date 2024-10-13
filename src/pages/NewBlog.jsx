@@ -8,12 +8,14 @@ import { Button } from "@mui/material";
 import { Select, InputLabel, FormControl } from "@mui/material";
 
 const NewBlog = () => {
+  const { getCategories, postBlog } = useBlogCalls();
+
   const initialState = {
     categoryId: "",
     title: "",
     content: "",
     image: "",
-    isPublish: false,
+    isPublish: true,
   }
   const [data, setData] = useState(initialState)
   const handleChange = (e) => {
@@ -22,10 +24,12 @@ const NewBlog = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(data?.isPublish){
+      postBlog("/", data)
+    }
     console.log("Form submitted");
   };
-  const { getCategories } = useBlogCalls();
-  const categories = useSelector((state) => state.blog.categories);
+    const categories = useSelector((state) => state.blog.categories);
   console.log(categories);
   useEffect(() => {
     getCategories();
@@ -99,7 +103,7 @@ const NewBlog = () => {
               id="status-select"
               name="isPublish"
               onChange={handleChange}
-              // value={data?.isPublish}
+              value={data?.isPublish}
             >
               <MenuItem value="Draft">Draft</MenuItem>
               <MenuItem value="Published">Published</MenuItem>
