@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Box, TextField, Button, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import {
+  Box,
+  TextField,
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
 import useBlogCalls from "../hooks/useBlogCalls";
 import { useSelector } from "react-redux";
 
@@ -12,27 +20,30 @@ const NewBlog = () => {
     content: "",
     image: "",
     isPublish: true,
-  }
-  const [data, setData] = useState(initialState)
+  };
+  const [data, setData] = useState(initialState);
   const categories = useSelector((state) => state.blog.categories);
   console.log(categories);
   useEffect(() => {
     getCategories();
   }, []);
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setData({ ...data, [name]: value });
-  }
+    const { name, value } = e.target;
+    setData({
+      ...data,
+      [name]: name === "isPublish" ? value === "Published" : value,
+    });
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(data?.isPublish){
-      postBlog("/", data)
-    }else{
-      postBlog("/my-blogs", data)
+    if (data?.isPublish) {
+      postBlog("/", data);
+    } else {
+      postBlog("/my-blogs", data);
     }
     console.log("Form submitted");
   };
-  
+
   return (
     <div>
       <Box
@@ -42,7 +53,7 @@ const NewBlog = () => {
           top: "40%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: 300,
+          width: { xs: 280, md: 400 }, // Adjusts width for smaller and larger screens
           backgroundColor: "background.paper",
           border: "0 solid #000",
           boxShadow: 24,
@@ -73,8 +84,8 @@ const NewBlog = () => {
             onChange={handleChange}
             required
           />
-          <FormControl >
-            <InputLabel variant="outlined" id="category-select-label" required >
+          <FormControl>
+            <InputLabel variant="outlined" id="category-select-label" required>
               Category
             </InputLabel>
             <Select
@@ -85,15 +96,16 @@ const NewBlog = () => {
               value={data?.categoryId}
               onChange={handleChange}
             >
+              <MenuItem>Please choose...</MenuItem>
               {categories?.map((category) => (
-                <MenuItem key={category._id} value={category.name}>
+                <MenuItem key={category._id} value={category._id}>
                   {category.name}
                 </MenuItem>
               ))}
             </Select>
           </FormControl>
           <FormControl>
-            <InputLabel variant="outlined" id="product-select-label" required >
+            <InputLabel variant="outlined" id="product-select-label" required>
               Status
             </InputLabel>
             <Select
@@ -104,6 +116,7 @@ const NewBlog = () => {
               onChange={handleChange}
               value={data.isPublish ? "Published" : "Draft"}
             >
+              <MenuItem value="Draft">Please choose...</MenuItem>
               <MenuItem value="Draft">Draft</MenuItem>
               <MenuItem value="Published">Published</MenuItem>
             </Select>

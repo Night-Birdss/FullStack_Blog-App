@@ -6,10 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 const useBlogCalls = () => {
   const { token } = useSelector((state) => state.auth);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const getBlogs = async () => {
+    if (!token) {
+      console.error("Token is missing. Unable to fetch blogs.");
+      return;
+    }
     try {
       const { data } = await axios(`${process.env.REACT_APP_BASE_URL}blogs/`, {
         headers: { Authorization: `Token ${token}` },
@@ -32,9 +35,11 @@ const useBlogCalls = () => {
       console.log(error);
     }
   };
-  const postBlog = async (path,data) => {
+  const postBlog = async (data) => {
     try {
-      await axios.post(path, data);
+      await axios.post(`${process.env.REACT_APP_BASE_URL}blogs/`, data,{
+        headers: { Authorization: `Token ${token}` },
+      });
       // toastSuccessNotify(`Veri ekleme başarılı.`)
       getBlogs()
     } catch (error) {
