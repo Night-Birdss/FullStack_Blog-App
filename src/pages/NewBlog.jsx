@@ -56,6 +56,7 @@ const NewBlog = () => {
             label="Title"
             id="title"
             name="title"
+            value={data?.title}
             variant="outlined"
             onChange={handleChange}
             required
@@ -65,6 +66,7 @@ const NewBlog = () => {
             id="image"
             variant="outlined"
             name="image"
+            value={data?.image}
             onChange={handleChange}
             required
           />
@@ -77,7 +79,7 @@ const NewBlog = () => {
               label="Category"
               id="category-select"
               name="categoryId"
-              value={""}
+              value={data?.categoryId}
               onChange={handleChange}
             >
               {categories?.map((category) => (
@@ -95,9 +97,9 @@ const NewBlog = () => {
               labelId="status-select-label"
               label="Status"
               id="status-select"
-              name="statusId"
+              name="isPublish"
               onChange={handleChange}
-              value={""}
+              // value={data?.isPublish}
             >
               <MenuItem value="Draft">Draft</MenuItem>
               <MenuItem value="Published">Published</MenuItem>
@@ -107,6 +109,7 @@ const NewBlog = () => {
             label="Content"
             id="content"
             name="content"
+            value={data?.content}
             variant="outlined"
             onChange={handleChange}
             required
