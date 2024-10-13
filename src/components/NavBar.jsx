@@ -37,7 +37,7 @@ function NavBar() {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="xxl">
         <Toolbar disableGutters>
           <CardMedia
           image="https://images.penguinrandomhouse.com/cover/9780593463291"
