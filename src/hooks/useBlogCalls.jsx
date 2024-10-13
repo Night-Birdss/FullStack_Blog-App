@@ -29,9 +29,8 @@ const useBlogCalls = () => {
           headers: { Authorization: `Token ${token}` },
         }
       );
-      console.log(data.data);
-      navigate("/detail");
       dispatch(getSingleBlogSuccess({ data: data.data }));
+      navigate(`/detail/${id}`);
     } catch (error) {
       console.log(error);
     }

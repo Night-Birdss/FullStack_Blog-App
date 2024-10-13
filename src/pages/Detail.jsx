@@ -1,33 +1,47 @@
-import * as React from "react";
-import { styled } from "@mui/material/styles";
+import React, { useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
 
-const Detail = () => {
-  const { singleblog } = useSelector((state) => state.blog);
-  console.log(singleblog);
+import { useParams } from "react-router";
+import useBlogCalls from "../hooks/useBlogCalls";
 
+const Detail = () => {
+  const { getSingleBlog } = useBlogCalls();
+  const { singleblog } = useSelector((state) => state.blog);
+  const { id } = useParams(); // URL'den id parametresini alıyoruz
+
+  useEffect(() => {
+    getSingleBlog(id);
+  }, [id]);
+
+  //!Düzenlenecek
+  if (!singleblog || !singleblog.userId) {
+    return <Typography variant="body2">Blog bulunamadı...</Typography>;
+  }
+
+  //!Tarih UI düzenlemeleri
   const isoDate = singleblog.createdAt;
   const dateObj = new Date(isoDate);
   const formattedDate = dateObj.toLocaleDateString(); // Tarih: 17/10/2024
   const formattedTime = dateObj.toLocaleTimeString();
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card>
+      <CardMedia
+        component="img"
+        a
+        alt="green iguana"
+        height="140"
+        image={singleblog.image}
+      />
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -37,13 +51,7 @@ const Detail = () => {
         title={singleblog.userId.username}
         subheader={`${formattedDate} ${formattedTime}`}
       />
-      <CardMedia
-        component="img"
-        a
-        alt="green iguana"
-        height="140"
-        image={singleblog.image}
-      />
+
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {singleblog.title}
