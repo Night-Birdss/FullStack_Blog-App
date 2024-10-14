@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { CardMedia } from '@mui/material';
-
+import { Link} from 'react-router-dom';
 
 const pages = ['DASHBOARD', 'NEW BLOG', 'ABOUT'];
 const settings = ['My Blogs', 'Profile', 'Logout'];
@@ -98,15 +98,14 @@ function NavBar() {
           >
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
               <Button
-                key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, mx:2, color: 'white', display: 'block' }}
               >
-                {page}
+                <Link style={{color:"white", textDecoration:"none" }} to="/">DASHBOARD</Link> 
+                <Link style={{color:"white", textDecoration:"none", marginLeft:"20px"}} to="/newBlog">NEW BLOG</Link> 
+                <Link style={{color:"white", textDecoration:"none", marginLeft:"20px"}} to="/about">ABOUT</Link> 
               </Button>
-            ))}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
