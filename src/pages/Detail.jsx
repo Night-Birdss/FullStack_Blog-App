@@ -18,8 +18,8 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
 const Detail = () => {
-  const { getSingleBlog, getComments } = useBlogCalls();
-  const { singleblog } = useSelector((state) => state.blog);
+  const { getSingleBlog, getComments, getLikes, postLike } = useBlogCalls();
+  const { singleblog, likes } = useSelector((state) => state.blog);
   const { id } = useParams(); // URL'den id parametresini alıyoruz
   const [showComments, setShowComments] = useState(false);
 
@@ -27,9 +27,20 @@ const Detail = () => {
     setShowComments((prev) => !prev);
   };
 
+const handleLike = () => {
+  if (likes.didUserLike) {
+    // Beğeni kaldır
+    postLike(id); // Beğeni eklemek için gerekli aksiyonu çağır
+  } else {
+    // Beğeni ekle
+    postLike(id); // Beğeni kaldırmak için gerekli aksiyonu çağır
+  }
+};
+
   useEffect(() => {
     getSingleBlog(id);
     getComments();
+    getLikes(id);
   }, [id]);
 
   //!Düzenlenecek
@@ -44,7 +55,7 @@ const Detail = () => {
   const formattedTime = dateObj.toLocaleTimeString();
 
   return (
-    <Card>
+    <Card sx={{ maxWidth: "1000px", m: "auto" }}>
       <CardMedia
         component="img"
         a
@@ -70,9 +81,9 @@ const Detail = () => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">
+        <Button size="small" onClick={handleLike}>
           <FavoriteBorderIcon />
-          {singleblog.likes.length}
+          {likes.countOfLikes}
         </Button>
         <Button size="small" onClick={toggleComments}>
           {showComments ? <CommentIcon /> : <CommentIcon />}
@@ -85,10 +96,7 @@ const Detail = () => {
       </CardActions>
       {showComments && (
         <>
-          {/* Form sadece bir kere çağrılacak */}
           <CommentForm blogId={id} />
-
-          {/* Yorumlar burada map'leniyor */}
           {singleblog.comments?.map((comment) => (
             <CommentCard key={comment._id} comment={comment} />
           ))}

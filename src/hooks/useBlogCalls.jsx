@@ -4,6 +4,7 @@ import {
   getBlogSuccess,
   getSingleBlogSuccess,
   getCommentsSuccess,
+  getLikesSuccess,
 } from "../features/blogSlice";
 
 const useBlogCalls = () => {
@@ -15,7 +16,6 @@ const useBlogCalls = () => {
       const { data } = await axios(`${process.env.REACT_APP_BASE_URL}blogs/`, {
         headers: { Authorization: `Token ${token}` },
       });
-      console.log({ data: data.data });
 
       dispatch(getBlogSuccess({ data: data.data }));
     } catch (error) {
@@ -36,6 +36,8 @@ const useBlogCalls = () => {
       console.log(error);
     }
   };
+
+  //!COMMENT
   const getComments = async () => {
     try {
       const { data } = await axios(
@@ -54,8 +56,8 @@ const useBlogCalls = () => {
       await axios.post(
         `${process.env.REACT_APP_BASE_URL}comments/`,
         {
-          blogId: id, // API'nin beklediği blogId
-          comment: value, // Gönderilen yorum
+          blogId: id,
+          comment: value,
         },
         {
           headers: { Authorization: `Token ${token}` },
@@ -67,7 +69,46 @@ const useBlogCalls = () => {
     }
   };
 
-  return { getBlogs, getSingleBlog, getComments, postComments };
+  //!LİKE
+  const getLikes = async (id) => {
+    try {
+      const { data } = await axios(
+        `${process.env.REACT_APP_BASE_URL}blogs/${id}/getLike`,
+
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      );
+      dispatch(getLikesSuccess({ data: data }));
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const postLike = async (id) => {
+    try {
+      await axios.post(
+        `${process.env.REACT_APP_BASE_URL}blogs/${id}/postLike`,
+        {},
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      );
+      getLikes(id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return {
+    getBlogs,
+    getSingleBlog,
+    getComments,
+    postComments,
+    getLikes,
+    postLike,
+  };
 };
 
 export default useBlogCalls;
