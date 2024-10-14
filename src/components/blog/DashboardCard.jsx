@@ -50,7 +50,14 @@ export default function DashboardCard({ blog }) {
           <ChatBubbleOutlineIcon />
           <RemoveRedEyeIcon />
         </Box>
-        <Button size="small" onClick={() => getSingleBlog(blog._id)}>
+        <Button
+          sx={{
+            color: "white",
+            backgroundColor: "primary.main",
+          }}
+          size="small"
+          onClick={() => getSingleBlog(blog._id)}
+        >
           Read More
         </Button>
       </CardActions>
