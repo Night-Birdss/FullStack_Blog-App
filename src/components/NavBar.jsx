@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { CardMedia } from '@mui/material';
 
+
 const pages = ['DASHBOARD', 'NEW BLOG', 'ABOUT'];
 const settings = ['My Blogs', 'Profile', 'Logout'];
 

@@ -11,6 +11,7 @@ import Login from "../pages/Login";
 import Detail from "../pages/Detail";
 import NewBlog from "../pages/NewBlog";
 import NavBar from "../components/NavBar";
+import NotFound from "../pages/NotFound";
 
 const AppRouter = () => {
   return (
@@ -23,6 +24,7 @@ const AppRouter = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/newBlog" element={<NewBlog />} />
+        <Route path="*" element={<NotFound/>} />
       </Routes>
     </BrowserRouter>
   );
