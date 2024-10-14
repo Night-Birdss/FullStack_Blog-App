@@ -21,7 +21,6 @@ export const authSlice = createSlice({
       state.username = "";
       state.loading = false;
     },
-
   },
 });
 
