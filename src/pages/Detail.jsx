@@ -14,7 +14,7 @@ import useBlogCalls from "../hooks/useBlogCalls";
 import CommentCard from "../components/blog/CommentCard";
 import CommentForm from "../components/blog/CommentForm";
 import CommentIcon from "@mui/icons-material/Comment";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
 const Detail = () => {
@@ -27,15 +27,15 @@ const Detail = () => {
     setShowComments((prev) => !prev);
   };
 
-const handleLike = () => {
-  if (likes.didUserLike) {
-    // Beğeni kaldır
-    postLike(id); // Beğeni eklemek için gerekli aksiyonu çağır
-  } else {
-    // Beğeni ekle
-    postLike(id); // Beğeni kaldırmak için gerekli aksiyonu çağır
-  }
-};
+  const handleLike = () => {
+    if (likes.didUserLike) {
+      // Beğeni kaldır
+      postLike(id); // Beğeni eklemek için gerekli aksiyonu çağır
+    } else {
+      // Beğeni ekle
+      postLike(id); // Beğeni kaldırmak için gerekli aksiyonu çağır
+    }
+  };
 
   useEffect(() => {
     getSingleBlog(id);
@@ -82,7 +82,11 @@ const handleLike = () => {
       </CardContent>
       <CardActions>
         <Button size="small" onClick={handleLike}>
-          <FavoriteBorderIcon />
+          {likes.didUserLike ? (
+            <FavoriteIcon sx={{ color: "red" }} />
+          ) : (
+            <FavoriteIcon />
+          )}
           {likes.countOfLikes}
         </Button>
         <Button size="small" onClick={toggleComments}>
