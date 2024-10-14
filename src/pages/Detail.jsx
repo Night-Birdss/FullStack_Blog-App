@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -7,38 +9,38 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
-import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
-
-import { useParams } from "react-router";
 import useBlogCalls from "../hooks/useBlogCalls";
 
 const Detail = () => {
-  const { getSingleBlog } = useBlogCalls();
-  const { singleblog } = useSelector((state) => state.blog);
+  const { getBlogs } = useBlogCalls();
+  const { blogs } = useSelector((state) => state.blog);
   const { id } = useParams(); // URL'den id parametresini alıyoruz
+  const singleblog = blogs.find((blog) => blog._id === id);
 
   useEffect(() => {
-    getSingleBlog(id);
-  }, [id]);
+    getBlogs();
+  }, []);
 
-  //!Düzenlenecek
-  if (!singleblog || !singleblog.userId) {
+  if (!singleblog) {
+    return <Typography variant="body2">Yükleniyor...</Typography>; // Yükleme mesajı
+  }
+
+  if (singleblog._id !== id) {
     return <Typography variant="body2">Blog bulunamadı...</Typography>;
   }
 
-  //!Tarih UI düzenlemeleri
+  // Tarih formatlama
   const isoDate = singleblog.createdAt;
   const dateObj = new Date(isoDate);
-  const formattedDate = dateObj.toLocaleDateString(); // Tarih: 17/10/2024
+  const formattedDate = dateObj.toLocaleDateString();
   const formattedTime = dateObj.toLocaleTimeString();
 
   return (
     <Card>
       <CardMedia
         component="img"
-        a
-        alt="green iguana"
+        alt="Blog görseli"
         height="140"
         image={singleblog.image}
       />
@@ -51,7 +53,6 @@ const Detail = () => {
         title={singleblog.userId.username}
         subheader={`${formattedDate} ${formattedTime}`}
       />
-
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {singleblog.title}
@@ -63,7 +64,7 @@ const Detail = () => {
       <CardActions>
         <Button size="small">Like</Button>
         <Button size="small">Yorum</Button>
-        <Button size="small">Görüntülenme</Button>
+        <Button size="small">{singleblog.countOfVisitors}</Button>
       </CardActions>
     </Card>
   );
