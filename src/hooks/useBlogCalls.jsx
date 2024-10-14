@@ -80,7 +80,6 @@ const useBlogCalls = () => {
         }
       );
       dispatch(getLikesSuccess({ data: data }));
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
