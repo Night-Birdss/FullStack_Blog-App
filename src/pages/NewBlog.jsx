@@ -24,7 +24,6 @@ const NewBlog = () => {
   };
   const [data, setData] = useState(initialState);
   const categories = useSelector((state) => state.blog.categories);
-  // console.log(categories);
   useEffect(() => {
     getCategories()
   }, []);
@@ -38,7 +37,6 @@ const NewBlog = () => {
   };
   const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(data)
         postBlog(data);
   };
 
