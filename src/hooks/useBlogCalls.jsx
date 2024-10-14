@@ -5,13 +5,11 @@ import {
   getSingleBlogSuccess,
   getCommentsSuccess,
 } from "../features/blogSlice";
-import { useNavigate } from "react-router-dom";
 
 const useBlogCalls = () => {
   const { token } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const getBlogs = async () => {
     try {
       const { data } = await axios(`${process.env.REACT_APP_BASE_URL}blogs/`, {
@@ -51,14 +49,19 @@ const useBlogCalls = () => {
       console.log(error);
     }
   };
-  const postComments = async () => {
+  const postComments = async (id, value) => {
     try {
-      await axios(
+      await axios.post(
         `${process.env.REACT_APP_BASE_URL}comments/`,
+        {
+          blogId: id, // API'nin beklediği blogId
+          comment: value, // Gönderilen yorum
+        },
         {
           headers: { Authorization: `Token ${token}` },
         }
       );
+      getSingleBlog(id);
     } catch (error) {
       console.log(error);
     }

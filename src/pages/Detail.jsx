@@ -15,8 +15,8 @@ import CommentCard from "../components/blog/CommentCard";
 import CommentForm from "../components/blog/CommentForm";
 
 const Detail = () => {
-  const { getSingleBlog } = useBlogCalls();
-  const { singleblog } = useSelector((state) => state.blog);
+  const { getSingleBlog, getComments } = useBlogCalls();
+  const { singleblog, comments } = useSelector((state) => state.blog);
   const { id } = useParams(); // URL'den id parametresini alıyoruz
   const [showComments, setShowComments] = useState(false);
 
@@ -26,6 +26,7 @@ const Detail = () => {
 
   useEffect(() => {
     getSingleBlog(id);
+    getComments();
   }, [id]);
 
   //!Düzenlenecek
@@ -76,7 +77,7 @@ const Detail = () => {
       {showComments && (
         <>
           {/* Form sadece bir kere çağrılacak */}
-          <CommentForm />
+          <CommentForm blogId={id} />
 
           {/* Yorumlar burada map'leniyor */}
           {singleblog.comments?.map((comment) => (
