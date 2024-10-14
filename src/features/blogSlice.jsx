@@ -7,7 +7,6 @@ export const blogSlice = createSlice({
     status: [],
     blogs: [],
     comment: [],
-    singleblog: null,
     loading: false,
     error: false,
   },
