@@ -1,6 +1,7 @@
 import { Box, Button, TextField } from "@mui/material";
 import useBlogCalls from "../../hooks/useBlogCalls";
 import { useState } from "react";
+import AddCommentIcon from "@mui/icons-material/AddComment";
 
 const CommentForm = ({ blogId }) => {
   const [comment, setComment] = useState("");
@@ -29,7 +30,7 @@ const CommentForm = ({ blogId }) => {
         value={comment}
         onChange={(e) => setComment(e.target.value)}
       />
-      <Button type="submit">Add Comment</Button>
+      <Button type="submit">{<AddCommentIcon />}</Button>
     </Box>
   );
 };

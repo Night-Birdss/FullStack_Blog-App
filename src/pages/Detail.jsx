@@ -13,10 +13,13 @@ import { useParams } from "react-router";
 import useBlogCalls from "../hooks/useBlogCalls";
 import CommentCard from "../components/blog/CommentCard";
 import CommentForm from "../components/blog/CommentForm";
+import CommentIcon from "@mui/icons-material/Comment";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
 const Detail = () => {
   const { getSingleBlog, getComments } = useBlogCalls();
-  const { singleblog, comments } = useSelector((state) => state.blog);
+  const { singleblog } = useSelector((state) => state.blog);
   const { id } = useParams(); // URL'den id parametresini alıyoruz
   const [showComments, setShowComments] = useState(false);
 
@@ -67,12 +70,18 @@ const Detail = () => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Like{singleblog.likes.length}</Button>
+        <Button size="small">
+          <FavoriteBorderIcon />
+          {singleblog.likes.length}
+        </Button>
         <Button size="small" onClick={toggleComments}>
-          {showComments ? "Yorumları Gizle" : "Yorumları Göster"}
+          {showComments ? <CommentIcon /> : <CommentIcon />}
           {singleblog.comments.length}
         </Button>
-        <Button size="small">Görüntülenme{singleblog.countOfVisitors}</Button>
+        <Button size="small">
+          <RemoveRedEyeIcon />
+          {singleblog.countOfVisitors}
+        </Button>
       </CardActions>
       {showComments && (
         <>
