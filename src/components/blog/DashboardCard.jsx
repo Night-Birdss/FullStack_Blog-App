@@ -11,9 +11,11 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Box } from "@mui/material";
 import useBlogCalls from "../../hooks/useBlogCalls";
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 export default function DashboardCard({ blog }) {
   const { getSingleBlog } = useBlogCalls();
+  const navigate = useNavigate();
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -46,11 +48,12 @@ export default function DashboardCard({ blog }) {
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box>
-          <FavoriteIcon />{blog.likes.length}
+          <FavoriteIcon />
+          {blog.likes.length}
           <ChatBubbleOutlineIcon />
           <RemoveRedEyeIcon />
         </Box>
-        <Button size="small" onClick={() => getSingleBlog(blog._id)}>
+        <Button size="small" onClick={() => navigate(blog._id)}>
           Read More
         </Button>
       </CardActions>

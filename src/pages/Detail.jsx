@@ -9,24 +9,23 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
-
 import { useParams } from "react-router";
 import useBlogCalls from "../hooks/useBlogCalls";
 import CommentCard from "../components/blog/CommentCard";
+import CommentForm from "../components/blog/CommentForm";
 
 const Detail = () => {
-  const { getSingleBlog, getComments } = useBlogCalls();
-  const { singleblog, comments } = useSelector((state) => state.blog);
+  const { getSingleBlog } = useBlogCalls();
+  const { singleblog } = useSelector((state) => state.blog);
   const { id } = useParams(); // URL'den id parametresini alıyoruz
   const [showComments, setShowComments] = useState(false);
-  console.log(comments);
+
   const toggleComments = () => {
     setShowComments((prev) => !prev);
   };
 
   useEffect(() => {
     getSingleBlog(id);
-    getComments();
   }, [id]);
 
   //!Düzenlenecek
@@ -74,7 +73,17 @@ const Detail = () => {
         </Button>
         <Button size="small">Görüntülenme{singleblog.countOfVisitors}</Button>
       </CardActions>
-      {showComments && comments?.map((comment)=>(<CommentCard comment={comment}/>))}
+      {showComments && (
+        <>
+          {/* Form sadece bir kere çağrılacak */}
+          <CommentForm />
+
+          {/* Yorumlar burada map'leniyor */}
+          {singleblog.comments?.map((comment) => (
+            <CommentCard key={comment._id} comment={comment} />
+          ))}
+        </>
+      )}
     </Card>
   );
 };

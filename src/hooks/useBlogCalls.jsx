@@ -34,7 +34,6 @@ const useBlogCalls = () => {
         }
       );
       dispatch(getSingleBlogSuccess({ data: data.data }));
-      navigate(`/${id}`);
     } catch (error) {
       console.log(error);
     }
@@ -52,8 +51,20 @@ const useBlogCalls = () => {
       console.log(error);
     }
   };
+  const postComments = async () => {
+    try {
+      await axios(
+        `${process.env.REACT_APP_BASE_URL}comments/`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  return { getBlogs, getSingleBlog, getComments };
+  return { getBlogs, getSingleBlog, getComments, postComments };
 };
 
 export default useBlogCalls;
