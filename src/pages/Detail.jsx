@@ -10,10 +10,11 @@ import { red } from "@mui/material/colors";
 import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
 
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useBlogCalls from "../hooks/useBlogCalls";
 
 const Detail = () => {
+  const navigate = useNavigate();
   const { getSingleBlog } = useBlogCalls();
   const { singleblog } = useSelector((state) => state.blog);
   const { id } = useParams(); // URL'den id parametresini alıyoruz
@@ -51,7 +52,9 @@ const Detail = () => {
         title={singleblog.userId.username}
         subheader={`${formattedDate} ${formattedTime}`}
       />
-
+      <Button size="small" onClick={() => navigate(-1)}>
+        Geri
+      </Button>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {singleblog.title}

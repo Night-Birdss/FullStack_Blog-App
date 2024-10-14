@@ -30,7 +30,7 @@ const useBlogCalls = () => {
         }
       );
       dispatch(getSingleBlogSuccess({ data: data.data }));
-      navigate(`/detail/${id}`);
+      navigate(`/${id}`);
     } catch (error) {
       console.log(error);
     }
