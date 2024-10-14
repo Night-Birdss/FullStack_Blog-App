@@ -170,7 +170,7 @@ function NavBar() {
                 ))}
               {!currentUser && (
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <Link sx={{ textAlign: "center" }} to="/login">Login</Link>
+                  <Link style={{ color: "black", textDecoration: "none" }} to="/login">Login</Link>
                 </MenuItem>
               )}
             </Menu>
