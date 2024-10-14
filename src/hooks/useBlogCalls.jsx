@@ -1,6 +1,10 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { getBlogSuccess, getSingleBlogSuccess } from "../features/blogSlice";
+import {
+  getBlogSuccess,
+  getSingleBlogSuccess,
+  getCommentsSuccess,
+} from "../features/blogSlice";
 import { useNavigate } from "react-router-dom";
 
 const useBlogCalls = () => {
@@ -35,8 +39,21 @@ const useBlogCalls = () => {
       console.log(error);
     }
   };
+  const getComments = async () => {
+    try {
+      const { data } = await axios(
+        `${process.env.REACT_APP_BASE_URL}comments/`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      );
+      dispatch(getCommentsSuccess({ data: data.data }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  return { getBlogs, getSingleBlog };
+  return { getBlogs, getSingleBlog, getComments };
 };
 
 export default useBlogCalls;

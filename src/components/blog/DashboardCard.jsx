@@ -46,7 +46,7 @@ export default function DashboardCard({ blog }) {
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box>
-          <FavoriteIcon />
+          <FavoriteIcon />{blog.likes.length}
           <ChatBubbleOutlineIcon />
           <RemoveRedEyeIcon />
         </Box>

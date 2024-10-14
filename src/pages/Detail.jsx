@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -10,17 +10,23 @@ import { red } from "@mui/material/colors";
 import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
 
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import useBlogCalls from "../hooks/useBlogCalls";
+import CommentCard from "../components/blog/CommentCard";
 
 const Detail = () => {
-  const navigate = useNavigate();
-  const { getSingleBlog } = useBlogCalls();
-  const { singleblog } = useSelector((state) => state.blog);
+  const { getSingleBlog, getComments } = useBlogCalls();
+  const { singleblog, comments } = useSelector((state) => state.blog);
   const { id } = useParams(); // URL'den id parametresini alıyoruz
+  const [showComments, setShowComments] = useState(false);
+  console.log(comments);
+  const toggleComments = () => {
+    setShowComments((prev) => !prev);
+  };
 
   useEffect(() => {
     getSingleBlog(id);
+    getComments();
   }, [id]);
 
   //!Düzenlenecek
@@ -52,9 +58,6 @@ const Detail = () => {
         title={singleblog.userId.username}
         subheader={`${formattedDate} ${formattedTime}`}
       />
-      <Button size="small" onClick={() => navigate(-1)}>
-        Geri
-      </Button>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {singleblog.title}
@@ -64,10 +67,14 @@ const Detail = () => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Like</Button>
-        <Button size="small">Yorum</Button>
-        <Button size="small">Görüntülenme</Button>
+        <Button size="small">Like{singleblog.likes.length}</Button>
+        <Button size="small" onClick={toggleComments}>
+          {showComments ? "Yorumları Gizle" : "Yorumları Göster"}
+          {singleblog.comments.length}
+        </Button>
+        <Button size="small">Görüntülenme{singleblog.countOfVisitors}</Button>
       </CardActions>
+      {showComments && comments?.map((comment)=>(<CommentCard comment={comment}/>))}
     </Card>
   );
 };
