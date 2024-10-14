@@ -10,7 +10,7 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Box } from "@mui/material";
 import useBlogCalls from "../../hooks/useBlogCalls";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 export default function DashboardCard({ blog }) {
   const { getSingleBlog } = useBlogCalls();
@@ -50,7 +50,14 @@ export default function DashboardCard({ blog }) {
           <ChatBubbleOutlineIcon />
           <RemoveRedEyeIcon />
         </Box>
-        <Button size="small" onClick={() => getSingleBlog(blog._id)}>
+        <Button
+          sx={{
+            color: "white",
+            backgroundColor: "primary.main",
+          }}
+          size="small"
+          onClick={() => getSingleBlog(blog._id)}
+        >
           Read More
         </Button>
       </CardActions>

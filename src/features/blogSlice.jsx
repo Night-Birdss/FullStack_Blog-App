@@ -1,3 +1,4 @@
+
 import { createSlice } from "@reduxjs/toolkit";
 
 export const blogSlice = createSlice({
@@ -19,12 +20,12 @@ export const blogSlice = createSlice({
   //     "isPublish": true
   //   }
   reducers: {
-    getCategorySuccess: (state, { payload }) => {
+    getCategorySuccess: (state, {payload}) => {
       // console.log(payload)
-      state.categories = payload.category;
+      state.categories = payload.data;
     },
     getStatusSuccess: (state, { payload }) => {
-      state.status = payload.isPublish;
+      state.status = payload.data;
     },
     getBlogSuccess: (state, { payload }) => {
       state.blogs = payload.data;
