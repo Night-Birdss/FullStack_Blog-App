@@ -12,6 +12,7 @@ import Detail from "../pages/Detail";
 import NewBlog from "../pages/NewBlog";
 import NavBar from "../components/NavBar";
 import NotFound from "../pages/NotFound";
+import FooTer from "../components/FooTer";
 
 const AppRouter = () => {
   return (
@@ -26,6 +27,7 @@ const AppRouter = () => {
         <Route path="/newBlog" element={<NewBlog />} />
         <Route path="*" element={<NotFound/>} />
       </Routes>
+      <FooTer/>
     </BrowserRouter>
   );
 };
