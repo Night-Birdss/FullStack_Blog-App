@@ -21,7 +21,6 @@ const Dashboard = () => {
           </Grid>
         ))}
       </Grid>
-      ;
     </div>
   );
 };

@@ -153,7 +153,7 @@ const RegisterForm = () => {
               variant="contained"
               size="large"
               sx={{
-                backgroundColor: "#0367A6",
+                backgroundColor: "primary.main",
                 "&:hover": { backgroundColor: "#023373" },
               }}
             >
