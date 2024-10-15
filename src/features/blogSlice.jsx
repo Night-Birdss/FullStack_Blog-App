@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 
 export const blogSlice = createSlice({
@@ -7,8 +6,9 @@ export const blogSlice = createSlice({
     categories: [],
     status: [],
     blogs: [],
-    comment: [],
-    singleblog:[],
+    singleblog: [],
+    comments: [],
+    likes: [],
     loading: false,
     error: false,
   },
@@ -20,11 +20,12 @@ export const blogSlice = createSlice({
   //     "isPublish": true
   //   }
   reducers: {
-    getCategorySuccess: (state, {payload}) => {
+    getCategorySuccess: (state, { payload }) => {
+      // console.log(payload)
       state.categories = payload.data;
     },
     getStatusSuccess: (state, { payload }) => {
-      state.status = payload.data;
+      state.status = payload.isPublish;
     },
     getBlogSuccess: (state, { payload }) => {
       state.blogs = payload.data;
@@ -32,8 +33,20 @@ export const blogSlice = createSlice({
     getSingleBlogSuccess: (state, { payload }) => {
       state.singleblog = payload.data;
     },
+    getCommentsSuccess: (state, { payload }) => {
+      state.comments = payload.data;
+    },
+    getLikesSuccess: (state, { payload }) => {
+      state.likes = payload.data;
+    },
   },
 });
-export const { getCategorySuccess, getStatusSuccess, getBlogSuccess,getSingleBlogSuccess } =
-  blogSlice.actions;
+export const {
+  getCategorySuccess,
+  getStatusSuccess,
+  getBlogSuccess,
+  getSingleBlogSuccess,
+  getCommentsSuccess,
+  getLikesSuccess,
+} = blogSlice.actions;
 export default blogSlice.reducer;

@@ -7,7 +7,6 @@ const Dashboard = () => {
   const { blogs } = useSelector((state) => state.blog);
   const { getBlogs } = useBlogCalls();
 
-  //?Sayfa yüklendikten sonra blogları getir
   useEffect(() => {
     getBlogs();
   }, []);
