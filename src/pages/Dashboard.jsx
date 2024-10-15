@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   // Sayfa ve blog başına gösterilecek sayıyı ayarlamak için state tanımlamaları
   const [currentPage, setCurrentPage] = useState(1);
-  const blogsPerPage = 5; // Sayfa başına gösterilecek blog sayısı
+  const blogsPerPage = 10; // Sayfa başına gösterilecek blog sayısı
 
   useEffect(() => {
     getBlogs();
