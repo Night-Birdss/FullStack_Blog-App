@@ -53,6 +53,8 @@ const useBlogCalls = () => {
       console.log(error);
     }
   };
+
+  //!BLOG
   const postBlog = async (data) => {
     try {
       await axios.post(`${process.env.REACT_APP_BASE_URL}blogs/`, data, {
@@ -60,6 +62,19 @@ const useBlogCalls = () => {
       });
       toastSuccessNotify(`Veri ekleme başarılı.`);
       navigate("/");
+      getBlogs();
+    } catch (error) {
+      toastErrorNotify("Ekleme işlemi başarısız oldu.");
+    }
+  };
+  
+  const updateBlog = async (id, data) => {
+    try {
+      await axios.put(`${process.env.REACT_APP_BASE_URL}blogs/${id}`, data, {
+        headers: { Authorization: `Token ${token}` },
+      });
+      toastSuccessNotify(`Veri ekleme başarılı.`);
+      navigate(`/detail/${id}`);
       getBlogs();
     } catch (error) {
       toastErrorNotify("Ekleme işlemi başarısız oldu.");
@@ -153,6 +168,7 @@ const useBlogCalls = () => {
     getCategories,
     postBlog,
     getBlogsDraft,
+    updateBlog,
   };
 };
 
