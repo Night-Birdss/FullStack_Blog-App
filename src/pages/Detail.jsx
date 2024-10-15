@@ -23,6 +23,7 @@ const Detail = () => {
   const { id } = useParams(); // URL'den id parametresini alıyoruz
   const [showComments, setShowComments] = useState(false);
 
+
   const toggleComments = () => {
     setShowComments((prev) => !prev);
   };
@@ -87,7 +88,9 @@ const Detail = () => {
           ) : (
             <FavoriteIcon />
           )}
-          {likes.countOfLikes}
+          {singleblog.likes.length > 0
+            ? likes.countOfLikes || singleblog.likes.length
+            : singleblog.likes.length}
         </Button>
         <Button size="small" onClick={toggleComments}>
           {showComments ? <CommentIcon /> : <CommentIcon />}
