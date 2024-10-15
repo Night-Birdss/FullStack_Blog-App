@@ -1,4 +1,5 @@
-import { Avatar, Box, Container, Grid, Link, Typography } from "@mui/material";
+import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import React from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import LoginForm from "../components/auth/LoginForm";

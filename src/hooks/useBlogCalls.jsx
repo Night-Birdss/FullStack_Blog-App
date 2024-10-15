@@ -1,17 +1,17 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getBlogSuccess,
   getSingleBlogSuccess,
   getCommentsSuccess,
   getLikesSuccess,
   getCategorySuccess,
   getBlogSuccess,
-  getSingleBlogSuccess,
 } from "../features/blogSlice";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
+import { useNavigate } from "react-router";
 
 const useBlogCalls = () => {
+  const navigate = useNavigate();
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const getBlogs = async () => {
@@ -137,6 +137,8 @@ const useBlogCalls = () => {
     postComments,
     getLikes,
     postLike,
+    getCategories,
+    postBlog,
   };
 };
 

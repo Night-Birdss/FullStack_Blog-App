@@ -15,6 +15,7 @@ import CommentForm from "../components/blog/CommentForm";
 import CommentIcon from "@mui/icons-material/Comment";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import { useSelector } from "react-redux";
 
 const Detail = () => {
   const { getSingleBlog, getComments, getLikes, postLike } = useBlogCalls();
