@@ -70,7 +70,7 @@ const LoginForm = () => {
               variant="contained"
               type="submit"
               disabled={isSubmitting}
-              sx={{ backgroundColor: "green" }}
+              sx={{ backgroundColor: "primary.main" }}
             >
               Submit
             </Button>

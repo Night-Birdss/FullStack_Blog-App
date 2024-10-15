@@ -19,7 +19,7 @@ const Login = () => {
         <Grid item xs={12} sm={10} md={6}>
           <Avatar
             sx={{
-              backgroundColor: "green",
+              backgroundColor: "primary.main",
               m: "auto",
               width: 40,
               height: 40,
@@ -27,7 +27,7 @@ const Login = () => {
           >
             <PersonIcon />
           </Avatar>
-          <Typography variant="h4" align="center" mb={4} color="primary">
+          <Typography variant="h4" align="center" mb={4} color="primary.main">
             Login
           </Typography>
           {/* LOGİN FORM */}
