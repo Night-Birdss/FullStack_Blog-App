@@ -9,7 +9,6 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Box } from "@mui/material";
-import useBlogCalls from "../../hooks/useBlogCalls";
 import { useNavigate } from "react-router";
 
 export default function DashboardCard({ blog }) {

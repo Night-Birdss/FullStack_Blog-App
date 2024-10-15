@@ -5,11 +5,14 @@ import {
   getSingleBlogSuccess,
   getCommentsSuccess,
   getLikesSuccess,
+  getCategorySuccess,
+  getBlogSuccess,
+  getSingleBlogSuccess,
 } from "../features/blogSlice";
+import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 
 const useBlogCalls = () => {
   const { token } = useSelector((state) => state.auth);
-
   const dispatch = useDispatch();
   const getBlogs = async () => {
     try {
@@ -20,6 +23,33 @@ const useBlogCalls = () => {
       dispatch(getBlogSuccess({ data: data.data }));
     } catch (error) {
       console.log(error);
+    }
+  };
+  const getCategories = async () => {
+    try {
+      const { data } = await axios(
+        `${process.env.REACT_APP_BASE_URL}categories/`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      );
+      // console.log({data:data.data});
+      dispatch(getCategorySuccess({ data: data.data }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const postBlog = async (data) => {
+    console.log(token);
+    try {
+      await axios.post(`${process.env.REACT_APP_BASE_URL}blogs/`, data, {
+        headers: { Authorization: `Token ${token}` },
+      });
+      toastSuccessNotify(`Veri ekleme başarılı.`);
+      navigate("/");
+      getBlogs();
+    } catch (error) {
+      toastErrorNotify("Ekleme işlemi başarısız oldu.");
     }
   };
 
