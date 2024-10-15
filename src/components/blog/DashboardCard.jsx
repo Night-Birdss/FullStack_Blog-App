@@ -10,7 +10,6 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Box } from "@mui/material";
 import useBlogCalls from "../../hooks/useBlogCalls";
-// import { useEffect } from "react";
 
 export default function DashboardCard({ blog }) {
   const { getSingleBlog } = useBlogCalls();

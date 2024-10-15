@@ -5,8 +5,6 @@ import { useSelector } from "react-redux";
 import Grid from "@mui/material/Grid";
 const Dashboard = () => {
   const { blogs } = useSelector((state) => state.blog);
-  console.log(blogs);
-
   const { getBlogs } = useBlogCalls();
 
   //?Sayfa yüklendikten sonra blogları getir
@@ -23,7 +21,6 @@ const Dashboard = () => {
           </Grid>
         ))}
       </Grid>
-      ;
     </div>
   );
 };
