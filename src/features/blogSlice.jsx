@@ -6,7 +6,9 @@ export const blogSlice = createSlice({
     categories: [],
     status: [],
     blogs: [],
-    comment: [],
+    singleblog: [],
+    comments: [],
+    likes: [],
     loading: false,
     error: false,
   },
@@ -28,6 +30,15 @@ export const blogSlice = createSlice({
     getBlogSuccess: (state, { payload }) => {
       state.blogs = payload.data;
     },
+    getSingleBlogSuccess: (state, { payload }) => {
+      state.singleblog = payload.data;
+    },
+    getCommentsSuccess: (state, { payload }) => {
+      state.comments = payload.data;
+    },
+    getLikesSuccess: (state, { payload }) => {
+      state.likes = payload.data;
+    },
   },
 });
 export const {
@@ -35,5 +46,7 @@ export const {
   getStatusSuccess,
   getBlogSuccess,
   getSingleBlogSuccess,
+  getCommentsSuccess,
+  getLikesSuccess,
 } = blogSlice.actions;
 export default blogSlice.reducer;
