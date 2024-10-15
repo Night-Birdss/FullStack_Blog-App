@@ -162,7 +162,7 @@ function NavBar() {
             >
               {currentUser ? (
                 [
-                  { text: "My Blogs", link: "/" },
+                  { text: "My Blogs", link: "/myblogs" },
                   { text: "Profile", link: "/profile" },
                   { text: "Logout", link: "/", onClick: logout },
                 ].map((item, index) => (

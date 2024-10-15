@@ -6,27 +6,29 @@ export const authSlice = createSlice({
   initialState: {
     token: "",
     username: "",
+    id: "",
   },
   reducers: {
     loginSuccess: (state, { payload }) => {
       state.token = payload.token;
       state.username = payload.user.username;
+      state.id = payload.user._id;
+      console.log(payload);
     },
     registerSuccess: (state, { payload }) => {
       state.token = payload.token;
-      state.username = payload.data.username;
+      state.username = payload.user.username;
+      state.id = payload.user._id;
     },
     logoutSuccess: (state) => {
       state.token = "";
       state.username = "";
+      state.id = "";
     },
   },
 });
 
-export const {
-  loginSuccess,
-  registerSuccess,
-  logoutSuccess,
-} = authSlice.actions;
+export const { loginSuccess, registerSuccess, logoutSuccess } =
+  authSlice.actions;
 
 export default authSlice.reducer;
