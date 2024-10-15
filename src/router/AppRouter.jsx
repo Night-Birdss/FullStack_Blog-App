@@ -13,6 +13,8 @@ import NewBlog from "../pages/NewBlog";
 import NavBar from "../components/NavBar";
 import NotFound from "../pages/NotFound";
 import FooTer from "../components/FooTer";
+import PrivateRouter from "./PrivateRouter";
+import Profile from "../pages/Profile";
 
 const AppRouter = () => {
   return (
@@ -23,11 +25,14 @@ const AppRouter = () => {
         <Route path="/about" element={<About />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/newBlog" element={<NewBlog />} />
-        <Route path="*" element={<NotFound/>} />
+        <Route path="" element={<PrivateRouter />}>
+          <Route path="/detail:id" element={<Detail />} />
+          <Route path="/newBlog" element={<NewBlog />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
-      <FooTer/>
+      <FooTer />
     </BrowserRouter>
   );
 };

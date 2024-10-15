@@ -19,8 +19,7 @@ const useBlogCalls = () => {
       const { data } = await axios(`${process.env.REACT_APP_BASE_URL}blogs/`, {
         headers: { Authorization: `Token ${token}` },
       });
-
-      dispatch(getBlogSuccess({ data: data.data }));
+        dispatch(getBlogSuccess({ data: data.data }));
     } catch (error) {
       console.log(error);
     }
@@ -33,14 +32,12 @@ const useBlogCalls = () => {
           headers: { Authorization: `Token ${token}` },
         }
       );
-      // console.log({data:data.data});
       dispatch(getCategorySuccess({ data: data.data }));
     } catch (error) {
       console.log(error);
     }
   };
   const postBlog = async (data) => {
-    console.log(token);
     try {
       await axios.post(`${process.env.REACT_APP_BASE_URL}blogs/`, data, {
         headers: { Authorization: `Token ${token}` },

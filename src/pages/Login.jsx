@@ -1,9 +1,8 @@
 import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
 import React from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import LoginForm from "../components/auth/LoginForm";
-
+import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <Container maxWidth="lg">
@@ -20,7 +19,7 @@ const Login = () => {
         <Grid item xs={12} sm={10} md={6}>
           <Avatar
             sx={{
-              backgroundColor: "green",
+              backgroundColor: "primary.main",
               m: "auto",
               width: 40,
               height: 40,
@@ -28,7 +27,7 @@ const Login = () => {
           >
             <PersonIcon />
           </Avatar>
-          <Typography variant="h4" align="center" mb={4} color="primary">
+          <Typography variant="h4" align="center" mb={4} color="primary.main">
             Login
           </Typography>
           {/* LOGİN FORM */}

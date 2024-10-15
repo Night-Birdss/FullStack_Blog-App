@@ -4,7 +4,10 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 const FooTer = () => {
   return (
-    <AppBar position="fixed" sx={{ top: "auto", bottom: 0,}}>
+    <AppBar 
+    // position="fixed"
+     sx={{ top: "auto", bottom: 0,}}
+     >
       <Toolbar
         sx={{
           display: "flex",

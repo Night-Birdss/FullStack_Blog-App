@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { loginSuccess, registerSuccess } from "../features/authSlice";
+import { useDispatch } from "react-redux";
+import { loginSuccess, registerSuccess, logoutSuccess } from "../features/authSlice";
 
 const useAuthCalls = () => {
   const navigate = useNavigate();
@@ -19,6 +19,15 @@ const useAuthCalls = () => {
       console.log(error);
     }
   };
+  const logout = async () => {
+    try {
+      await axios(`${process.env.REACT_APP_BASE_URL}auth/logout`)
+      dispatch(logoutSuccess())
+      navigate("/")
+    } catch (error) {
+      console.log("çıkılamadı")
+    }
+  };
   const register = async (userInfo) => {
     try {
       const { data } = await axios.post(
@@ -32,7 +41,7 @@ const useAuthCalls = () => {
     }
   };
 
-  return { login, register };
+  return { login, register,logout};
 };
 
 export default useAuthCalls;
