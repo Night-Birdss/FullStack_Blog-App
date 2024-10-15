@@ -8,20 +8,26 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import { Box } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { useNavigate } from "react-router";
 
 export default function DashboardCard({ blog }) {
   const navigate = useNavigate();
+  const [liked, setLiked] = React.useState(false);
+  const [likeCount, setLikeCount] = React.useState(blog.likes.length);
+
+  const handleLikeClick = () => {
+    if (liked) {
+      setLikeCount(likeCount - 1); // Eğer like edilmişse, geri al
+    } else {
+      setLikeCount(likeCount + 1); // Eğer like edilmemişse, like et
+    }
+    setLiked(!liked); // Like durumunu tersine çevir
+  };
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        alt="Porsche"
-        height="140"
-        image={blog.image}
-      />
+      <CardMedia component="img" alt="Porsche" height="140" image={blog.image} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {blog.title}
@@ -45,8 +51,10 @@ export default function DashboardCard({ blog }) {
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box>
-          <FavoriteIcon />
-          {blog.likes.length}
+          <IconButton onClick={handleLikeClick}>
+            <FavoriteIcon sx={{ color: liked ? "red" : "inherit" }} />
+          </IconButton>
+          {likeCount}
           <ChatBubbleOutlineIcon />
           <RemoveRedEyeIcon />
         </Box>
