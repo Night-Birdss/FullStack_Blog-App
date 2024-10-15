@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 const FooTer = () => {
   return (
     <AppBar 
-    position="fixed"
+    // position="fixed"
      sx={{ top: "auto", bottom: 0,}}
      >
       <Toolbar

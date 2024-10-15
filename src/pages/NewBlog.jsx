@@ -41,19 +41,26 @@ const NewBlog = () => {
   };
 
   return (
+    <Box sx={{
+      display:"flex",
+      justifyContent:"center",
+      alignItems:"center",
+      height: "100vh"
+    }}>
         <Box
           sx={{
-            position: "absolute",
+            // position: "absolute",
+            
             borderRadius: "3%",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
+            // top: "50%",
+            // left: "50%",
+            // transform: "translate(-50%, -50%)",
             width: { xs: 280, md: 400 },
-            height: { xs: 300, md: 480 },
             backgroundColor: "background.paper",
             border: "0 solid #000",
             boxShadow: 24,
             p: 1,
+            
           }}
         >
           <h2>New Blog</h2>
@@ -136,7 +143,7 @@ const NewBlog = () => {
               NEW BLOG
             </Button>
           </Box>
-        </Box>
+        </Box></Box>
   );
 };
 
