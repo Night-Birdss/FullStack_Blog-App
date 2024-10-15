@@ -22,7 +22,6 @@ function NavBar() {
   const { logout } = useAuthCalls();
 
   const currentUser = useSelector((state) => state.auth.username);
-
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
