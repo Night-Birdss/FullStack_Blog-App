@@ -161,36 +161,23 @@ function NavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {currentUser && (
-                <>
-                  <MenuItem onClick={handleCloseUserMenu}>
+              {currentUser ? (
+                [
+                  { text: "My Blogs", link: "/" },
+                  { text: "Profile", link: "/profile" },
+                  { text: "Logout", link: "/", onClick: logout },
+                ].map((item, index) => (
+                  <MenuItem key={index} onClick={handleCloseUserMenu}>
                     <Link
                       style={{ color: "black", textDecoration: "none" }}
-                      to="/"
+                      to={item.link}
+                      onClick={item.onClick}
                     >
-                      My Blogs
+                      {item.text}
                     </Link>
                   </MenuItem>
-                  <MenuItem onClick={handleCloseUserMenu}>
-                    <Link
-                      style={{ color: "black", textDecoration: "none" }}
-                      to="/profile"
-                    >
-                      Profile
-                    </Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleCloseUserMenu}>
-                    <Link
-                      style={{ color: "black", textDecoration: "none" }}
-                      onClick={logout}
-                      to="/"
-                    >
-                      Logout
-                    </Link>
-                  </MenuItem>
-                </>
-              )}
-              {!currentUser && (
+                ))
+              ) : (
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Link
                     style={{ color: "black", textDecoration: "none" }}
