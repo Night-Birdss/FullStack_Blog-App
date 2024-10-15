@@ -15,6 +15,7 @@ import NotFound from "../pages/NotFound";
 import FooTer from "../components/FooTer";
 import PrivateRouter from "./PrivateRouter";
 import Profile from "../pages/Profile";
+import MyBlog from "../components/blog/MyBlog";
 
 const AppRouter = () => {
   return (
@@ -29,6 +30,7 @@ const AppRouter = () => {
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="/newBlog" element={<NewBlog />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/myblogs" element={<MyBlog />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

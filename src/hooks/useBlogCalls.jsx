@@ -14,16 +14,32 @@ const useBlogCalls = () => {
   const navigate = useNavigate();
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
   const getBlogs = async () => {
     try {
       const { data } = await axios(`${process.env.REACT_APP_BASE_URL}blogs/`, {
         headers: { Authorization: `Token ${token}` },
       });
-        dispatch(getBlogSuccess({ data: data.data }));
+      dispatch(getBlogSuccess({ data: data.data }));
     } catch (error) {
       console.log(error);
     }
   };
+
+  const getBlogsDraft = async (id) => {
+    try {
+      const { data } = await axios(
+        `${process.env.REACT_APP_BASE_URL}blogs/?author=${id}`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      );
+      dispatch(getBlogSuccess({ data: data.data }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const getCategories = async () => {
     try {
       const { data } = await axios(
@@ -136,6 +152,7 @@ const useBlogCalls = () => {
     postLike,
     getCategories,
     postBlog,
+    getBlogsDraft,
   };
 };
 

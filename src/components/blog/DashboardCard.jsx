@@ -56,7 +56,7 @@ export default function DashboardCard({ blog }) {
             color: "white",
             backgroundColor: "primary.main",
           }}
-          onClick={() => navigate(`detail/${blog._id}`)}
+          onClick={() => navigate(`/detail/${blog._id}`)}
         >
           Read More
         </Button>
