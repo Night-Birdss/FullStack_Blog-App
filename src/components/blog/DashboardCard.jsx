@@ -50,7 +50,14 @@ export default function DashboardCard({ blog }) {
           <ChatBubbleOutlineIcon />
           <RemoveRedEyeIcon />
         </Box>
-        <Button size="small" onClick={() => navigate(`detail/${blog._id}`)}>
+        <Button
+          size="small"
+          sx={{
+            color: "white",
+            backgroundColor: "primary.main",
+          }}
+          onClick={() => navigate(`detail/${blog._id}`)}
+        >
           Read More
         </Button>
       </CardActions>
