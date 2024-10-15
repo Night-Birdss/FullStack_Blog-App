@@ -12,16 +12,17 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { CardMedia } from "@mui/material";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import useAuthCalls from "../hooks/useAuthCalls";
 
 const pages = ["DASHBOARD", "NEW BLOG", "ABOUT"];
-const settings = ["My Blogs", "Profile", "Logout"];
 
 function NavBar() {
-  
+  const { logout } = useAuthCalls();
+
   const currentUser = useSelector((state) => state.auth.username);
-  
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -160,17 +161,43 @@ function NavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {currentUser &&
-                settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography sx={{ textAlign: "center" }}>
-                      {setting}
-                    </Typography>
+              {currentUser && (
+                <>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Link
+                      style={{ color: "black", textDecoration: "none" }}
+                      to="/"
+                    >
+                      My Blogs
+                    </Link>
                   </MenuItem>
-                ))}
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Link
+                      style={{ color: "black", textDecoration: "none" }}
+                      to="/profile"
+                    >
+                      Profile
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Link
+                      style={{ color: "black", textDecoration: "none" }}
+                      onClick={logout}
+                      to="/"
+                    >
+                      Logout
+                    </Link>
+                  </MenuItem>
+                </>
+              )}
               {!currentUser && (
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <Link style={{ color: "black", textDecoration: "none" }} to="/login">Login</Link>
+                  <Link
+                    style={{ color: "black", textDecoration: "none" }}
+                    to="/login"
+                  >
+                    Login
+                  </Link>
                 </MenuItem>
               )}
             </Menu>
