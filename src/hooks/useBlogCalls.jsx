@@ -121,9 +121,11 @@ const useBlogCalls = () => {
           headers: { Authorization: `Token ${token}` },
         }
       );
+      toastSuccessNotify("Yorumunuz başarıyla eklendi.");
       getSingleBlog(id);
     } catch (error) {
       console.log(error);
+      toastErrorNotify("Yorumunuz eklenemedi.");
     }
   };
 
