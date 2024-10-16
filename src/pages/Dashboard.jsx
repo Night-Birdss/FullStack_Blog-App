@@ -36,7 +36,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Grid container justifyContent={"center"} gap={2}>
+      <Grid container justifyContent={"center"} gap={2} sx={{ mt: "2rem" }}>
         {currentBlogs?.map((blog, index) => (
           <Grid item key={index}>
             <DashboardCard key={index} blog={blog} />
@@ -51,6 +51,7 @@ const Dashboard = () => {
           justifyContent="center"
           alignItems="center"
           marginTop={2}
+          marginBottom={2}
         >
           <Pagination
             count={totalPages} // Toplam sayfa sayısı

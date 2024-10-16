@@ -10,7 +10,6 @@ const MyBlog = () => {
   const { blogs } = useSelector((state) => state.blog);
 
   const userId = useSelector((state) => state.auth.id);
-  
 
   const draftBlogs = blogs.filter((blog) => blog.isPublish === false);
 
@@ -24,7 +23,7 @@ const MyBlog = () => {
 
   return (
     <div>
-      <Grid container justifyContent={"center"} gap={2}>
+      <Grid container justifyContent={"center"} gap={2} sx={{ my: "3rem" }}>
         {draftBlogs?.map((blog, index) => (
           <Grid item key={index}>
             <DashboardCard key={index} blog={blog} />
