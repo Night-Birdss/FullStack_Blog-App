@@ -37,7 +37,7 @@ const Detail = () => {
   const [data, setData] = useState(initialState);
   const handleOpen = () => {
     setData({
-      categoryId: singleblog.categoryId.name,
+      categoryId: singleblog.categoryId?._id,
       title: singleblog.title,
       content: singleblog.content,
       image: singleblog.image,
@@ -51,7 +51,7 @@ const Detail = () => {
     setShowComments((prev) => !prev);
   };
 
-  console.log(singleblog);
+  console.log(singleblog.categoryId);
 
   const handleLike = () => {
     if (likes.didUserLike) {

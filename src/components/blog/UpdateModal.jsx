@@ -19,7 +19,7 @@ const UpdateModal = ({ handleClose, open, data, setData }) => {
   const { id } = useParams();
   const { singleblog } = useSelector((state) => state.blog);
   const categories = useSelector((state) => state.blog.categories);
-  console.log(data);
+  console.log(categories);
 
   useEffect(() => {
     getCategories();
@@ -32,6 +32,7 @@ const UpdateModal = ({ handleClose, open, data, setData }) => {
       [name]: value,
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     updateBlog(id, data);
@@ -97,7 +98,7 @@ const UpdateModal = ({ handleClose, open, data, setData }) => {
                 label="Category"
                 id="category-select-label"
                 name="categoryId"
-                value={data?.categoryId.name}
+                value={data?.categoryId}
                 onChange={handleChange}
               >
                 <MenuItem>Please choose...</MenuItem>
@@ -118,6 +119,7 @@ const UpdateModal = ({ handleClose, open, data, setData }) => {
                 id="status-select"
                 name="isPublish"
                 onChange={handleChange}
+                value={data?.isPublish}
                 // value={data.isPublish ? "Published" : "Draft"}
               >
                 <MenuItem selected>Please choose...</MenuItem>
