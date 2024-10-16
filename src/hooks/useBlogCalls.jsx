@@ -67,7 +67,7 @@ const useBlogCalls = () => {
       toastErrorNotify("Ekleme işlemi başarısız oldu.");
     }
   };
-  
+
   const updateBlog = async (id, data) => {
     try {
       await axios.put(`${process.env.REACT_APP_BASE_URL}blogs/${id}`, data, {
@@ -75,9 +75,20 @@ const useBlogCalls = () => {
       });
       toastSuccessNotify(`Veri ekleme başarılı.`);
       navigate(`/detail/${id}`);
-      getBlogs();
+      getSingleBlog(id);
     } catch (error) {
       toastErrorNotify("Ekleme işlemi başarısız oldu.");
+    }
+  };
+  const deleteBlog = async (id) => {
+    try {
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}blogs/${id}`, {
+        headers: { Authorization: `Token ${token}` },
+      });
+      toastSuccessNotify(`Silme işlemi başarılı`);
+      navigate(`/myblogs`);
+    } catch (error) {
+      toastErrorNotify("Silme işlemi başarısız oldu.");
     }
   };
 
@@ -121,9 +132,11 @@ const useBlogCalls = () => {
           headers: { Authorization: `Token ${token}` },
         }
       );
+      toastSuccessNotify("Yorumunuz başarıyla eklendi.");
       getSingleBlog(id);
     } catch (error) {
       console.log(error);
+      toastErrorNotify("Yorumunuz eklenemedi.");
     }
   };
 
@@ -169,6 +182,7 @@ const useBlogCalls = () => {
     postBlog,
     getBlogsDraft,
     updateBlog,
+    deleteBlog,
   };
 };
 

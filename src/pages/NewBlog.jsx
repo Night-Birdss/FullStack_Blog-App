@@ -38,6 +38,7 @@ const NewBlog = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     postBlog(data);
+    setData(initialState)
   };
 
   return (

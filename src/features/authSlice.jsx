@@ -7,11 +7,13 @@ export const authSlice = createSlice({
     token: "",
     username: "",
     id: "",
+    userInfo: "",
   },
   reducers: {
     loginSuccess: (state, { payload }) => {
       state.token = payload.token;
       state.username = payload.user.username;
+      state.userInfo = payload.user;
       state.id = payload.user._id;
       console.log(payload);
     },

@@ -5,6 +5,7 @@ import AppRouter from "./router/AppRouter";
 import { Provider } from "react-redux";
 import store, { persistor } from "./app/store";
 import { PersistGate } from "redux-persist/integration/react";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const theme = createTheme({
@@ -26,6 +27,7 @@ function App() {
             <AppRouter />
           </PersistGate>
         </Provider>
+        <ToastContainer />
       </ThemeProvider>
     </>
   );
