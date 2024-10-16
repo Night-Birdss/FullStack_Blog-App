@@ -16,8 +16,6 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useAuthCalls from "../hooks/useAuthCalls";
 
-const pages = ["DASHBOARD", "NEW BLOG", "ABOUT"];
-
 function NavBar() {
   const { logout } = useAuthCalls();
 
@@ -63,26 +61,64 @@ function NavBar() {
               <MenuIcon />
             </IconButton>
             <Menu
+              sx={{
+                mt: "40px",
+                display: { xs: "block", md: "none" },
+              }}
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
                 vertical: "top",
-                horizontal: "left",
+                horizontal: "right",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ display: { xs: "block", md: "none" } }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: "center" }}>{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem
+                onClick={handleCloseNavMenu}
+                sx={{
+                  flexGrow: 1,
+                  display: { xs: "flex", md: "none" },
+                  flexDirection: "column",
+                }}
+              >
+                <Button onClick={handleCloseNavMenu} sx={{ color: "white" }}>
+                  <Link
+                    style={{ color: "black", textDecoration: "none" }}
+                    to="/"
+                  >
+                    DASHBOARD
+                  </Link>
+                </Button>
+                <Button onClick={handleCloseNavMenu} sx={{ color: "white" }}>
+                  <Link
+                    style={{
+                      color: "black",
+                      textDecoration: "none",
+                    }}
+                    to="/newBlog"
+                  >
+                    NEW BLOG
+                  </Link>
+                </Button>
+                <Button onClick={handleCloseNavMenu} sx={{ color: "white" }}>
+                  <Link
+                    style={{
+                      color: "black",
+                      textDecoration: "none",
+                    }}
+                    to="/about"
+                  >
+                    ABOUT
+                  </Link>
+                </Button>
+              </MenuItem>
+              {/* ))} */}
             </Menu>
           </Box>
           <CardMedia
@@ -111,11 +147,16 @@ function NavBar() {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, mx: 2, color: "white", display: "block" }}
+              sx={{ my: 2, mx: 1, color: "white" }}
             >
               <Link style={{ color: "white", textDecoration: "none" }} to="/">
                 DASHBOARD
               </Link>
+            </Button>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, mx: 1, color: "white" }}
+            >
               <Link
                 style={{
                   color: "white",
@@ -126,6 +167,11 @@ function NavBar() {
               >
                 NEW BLOG
               </Link>
+            </Button>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, mx: 1, color: "white" }}
+            >
               <Link
                 style={{
                   color: "white",
