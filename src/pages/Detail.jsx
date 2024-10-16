@@ -7,7 +7,7 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
-import { Box, Button, Modal } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useParams } from "react-router";
 import useBlogCalls from "../hooks/useBlogCalls";
 import CommentCard from "../components/blog/CommentCard";
@@ -24,16 +24,33 @@ const Detail = () => {
   const { id } = useParams(); // URL'den id parametresini alıyoruz
   const [showComments, setShowComments] = useState(false);
 
+  console.log(likes);
   //!MODAL YAPISI
+  const initialState = {
+    categoryId: "",
+    title: "",
+    content: "",
+    image: "",
+    isPublish: true,
+  };
+
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const [data, setData] = useState(initialState);
+  const handleOpen = () => {
+    setData({
+      categoryId: singleblog.categoryId?._id,
+      title: singleblog.title,
+      content: singleblog.content,
+      image: singleblog.image,
+      isPublish: singleblog.isPublish,
+    });
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
 
   const toggleComments = () => {
     setShowComments((prev) => !prev);
   };
-
-  console.log(singleblog);
 
   const handleLike = () => {
     if (likes.didUserLike) {
@@ -97,9 +114,13 @@ const Detail = () => {
         {singleblog.isPublish === false && (
           <Button onClick={() => handleOpen()}>Delete</Button>
         )}
-
-        <UpdateModal handleClose={handleClose} open={open} />
       </Box>
+      <UpdateModal
+        handleClose={handleClose}
+        open={open}
+        data={data}
+        setData={setData}
+      />
       <CardActions>
         <Button size="small" onClick={handleLike}>
           {likes.didUserLike ? (

@@ -67,7 +67,7 @@ const useBlogCalls = () => {
       toastErrorNotify("Ekleme işlemi başarısız oldu.");
     }
   };
-  
+
   const updateBlog = async (id, data) => {
     try {
       await axios.put(`${process.env.REACT_APP_BASE_URL}blogs/${id}`, data, {
@@ -75,7 +75,7 @@ const useBlogCalls = () => {
       });
       toastSuccessNotify(`Veri ekleme başarılı.`);
       navigate(`/detail/${id}`);
-      getBlogs();
+      getSingleBlog(id);
     } catch (error) {
       toastErrorNotify("Ekleme işlemi başarısız oldu.");
     }
