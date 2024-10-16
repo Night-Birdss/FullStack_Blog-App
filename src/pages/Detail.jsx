@@ -24,6 +24,7 @@ const Detail = () => {
   const { id } = useParams(); // URL'den id parametresini alıyoruz
   const [showComments, setShowComments] = useState(false);
 
+  console.log(likes);
   //!MODAL YAPISI
   const initialState = {
     categoryId: "",
