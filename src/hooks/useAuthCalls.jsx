@@ -6,7 +6,7 @@ import {
   registerSuccess,
   logoutSuccess,
 } from "../features/authSlice";
-
+import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 const useAuthCalls = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -18,6 +18,7 @@ const useAuthCalls = () => {
         userData
       );
       dispatch(loginSuccess(data));
+      toastSuccessNotify("login işlemi başarılı")
       navigate("/");
       console.log(data);
     } catch (error) {
