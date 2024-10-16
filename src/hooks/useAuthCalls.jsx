@@ -18,10 +18,10 @@ const useAuthCalls = () => {
         userData
       );
       dispatch(loginSuccess(data));
-      toastSuccessNotify("login işlemi başarılı")
-      navigate("/");
-      console.log(data);
+      toastSuccessNotify("Tebrikler bütün bilgileriniz çalınmıştır :))))");
+      navigate(-1);
     } catch (error) {
+      toastErrorNotify("Login işlemi başarısız.");
       console.log(error);
     }
   };
@@ -29,9 +29,11 @@ const useAuthCalls = () => {
     try {
       await axios(`${process.env.REACT_APP_BASE_URL}auth/logout`);
       dispatch(logoutSuccess());
+      toastSuccessNotify("Logout işlemi başarılı.");
       navigate("/");
     } catch (error) {
       console.log("çıkılamadı");
+      toastErrorNotify("Logout işlemi başarısız.");
     }
   };
   const register = async (userInfo) => {
@@ -41,8 +43,10 @@ const useAuthCalls = () => {
         userInfo
       );
       dispatch(registerSuccess(data));
+      toastSuccessNotify("Register işlemi başarılı.");
       navigate("/");
     } catch (error) {
+      toastErrorNotify("Register işlemi başarısız.");
       console.log(error);
     }
   };
