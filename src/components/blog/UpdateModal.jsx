@@ -17,9 +17,8 @@ import { useParams } from "react-router";
 const UpdateModal = ({ handleClose, open, data, setData }) => {
   const { getCategories, updateBlog } = useBlogCalls();
   const { id } = useParams();
-  const { singleblog } = useSelector((state) => state.blog);
+  
   const categories = useSelector((state) => state.blog.categories);
-  console.log(categories);
 
   useEffect(() => {
     getCategories();

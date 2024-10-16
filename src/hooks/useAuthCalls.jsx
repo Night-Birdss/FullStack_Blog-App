@@ -18,8 +18,8 @@ const useAuthCalls = () => {
         userData
       );
       dispatch(loginSuccess(data));
-      navigate("/");
       console.log(data);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

@@ -62,9 +62,11 @@ export default function DashboardCard({ blog }) {
           {likeCount}
           <IconButton>
             <ChatBubbleOutlineIcon />
+            {blog.comments.length}
           </IconButton>
           <IconButton>
             <RemoveRedEyeIcon />
+            {blog.countOfVisitors}
           </IconButton>
         </Box>
         <Button
