@@ -36,6 +36,7 @@ const UpdateModal = ({ handleClose, open, data, setData }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     updateBlog(id, data);
+    handleClose();
   };
 
   const style = {
