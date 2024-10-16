@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import {
   Box,
@@ -13,21 +13,14 @@ import {
 import useBlogCalls from "../../hooks/useBlogCalls";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { Form } from "formik";
 
-const UpdateModal = ({ handleClose, open }) => {
+const UpdateModal = ({ handleClose, open, data, setData }) => {
   const { getCategories, updateBlog } = useBlogCalls();
   const { id } = useParams();
-
-  const initialState = {
-    categoryId: "",
-    title: "",
-    content: "",
-    image: "",
-    isPublish: true,
-  };
-  const [data, setData] = useState(initialState);
+  const { singleblog } = useSelector((state) => state.blog);
   const categories = useSelector((state) => state.blog.categories);
+  console.log(data);
+
   useEffect(() => {
     getCategories();
   }, []);
@@ -104,7 +97,7 @@ const UpdateModal = ({ handleClose, open }) => {
                 label="Category"
                 id="category-select-label"
                 name="categoryId"
-                value={data?.categoryId}
+                value={data?.categoryId.name}
                 onChange={handleChange}
               >
                 <MenuItem>Please choose...</MenuItem>

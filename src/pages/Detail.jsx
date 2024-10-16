@@ -25,8 +25,26 @@ const Detail = () => {
   const [showComments, setShowComments] = useState(false);
 
   //!MODAL YAPISI
+  const initialState = {
+    categoryId: "",
+    title: "",
+    content: "",
+    image: "",
+    isPublish: true,
+  };
+
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const [data, setData] = useState(initialState);
+  const handleOpen = () => {
+    setData({
+      categoryId: singleblog.categoryId.name,
+      title: singleblog.title,
+      content: singleblog.content,
+      image: singleblog.image,
+      isPublish: singleblog.isPublish,
+    });
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
 
   const toggleComments = () => {
@@ -98,7 +116,12 @@ const Detail = () => {
           <Button onClick={() => handleOpen()}>Delete</Button>
         )}
       </Box>
-      <UpdateModal handleClose={handleClose} open={open} />
+      <UpdateModal
+        handleClose={handleClose}
+        open={open}
+        data={data}
+        setData={setData}
+      />
       <CardActions>
         <Button size="small" onClick={handleLike}>
           {likes.didUserLike ? (
