@@ -49,10 +49,10 @@ const Detail = () => {
   };
   const handleClose = () => setOpen(false);
 
+  
   const toggleComments = () => {
     setShowComments((prev) => !prev);
   };
-
   const handleLike = () => {
     if (likes.didUserLike) {
       // Beğeni kaldır

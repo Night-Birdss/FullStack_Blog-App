@@ -7,7 +7,6 @@ import {
   logoutSuccess,
 } from "../features/authSlice";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
-
 const useAuthCalls = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
