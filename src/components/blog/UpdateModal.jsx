@@ -19,7 +19,6 @@ const UpdateModal = ({ handleClose, open, data, setData }) => {
   const { id } = useParams();
   const { singleblog } = useSelector((state) => state.blog);
   const categories = useSelector((state) => state.blog.categories);
-  console.log(categories);
 
   useEffect(() => {
     getCategories();

@@ -7,7 +7,7 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
-import { Box, Button, Modal } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useParams } from "react-router";
 import useBlogCalls from "../hooks/useBlogCalls";
 import CommentCard from "../components/blog/CommentCard";
@@ -50,8 +50,6 @@ const Detail = () => {
   const toggleComments = () => {
     setShowComments((prev) => !prev);
   };
-
-  console.log(singleblog.categoryId);
 
   const handleLike = () => {
     if (likes.didUserLike) {
