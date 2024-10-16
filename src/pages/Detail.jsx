@@ -19,7 +19,8 @@ import { useSelector } from "react-redux";
 import UpdateModal from "../components/blog/UpdateModal";
 
 const Detail = () => {
-  const { getSingleBlog, getComments, getLikes, postLike } = useBlogCalls();
+  const { getSingleBlog, getComments, getLikes, postLike, deleteBlog } =
+    useBlogCalls();
   const { singleblog, likes } = useSelector((state) => state.blog);
   const { id } = useParams(); // URL'den id parametresini alıyoruz
   const [showComments, setShowComments] = useState(false);
@@ -112,7 +113,7 @@ const Detail = () => {
           <Button onClick={() => handleOpen()}>Update</Button>
         )}
         {singleblog.isPublish === false && (
-          <Button onClick={() => handleOpen()}>Delete</Button>
+          <Button onClick={() => deleteBlog(singleblog._id)}>Delete</Button>
         )}
       </Box>
       <UpdateModal

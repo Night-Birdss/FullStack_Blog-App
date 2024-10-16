@@ -80,6 +80,17 @@ const useBlogCalls = () => {
       toastErrorNotify("Ekleme işlemi başarısız oldu.");
     }
   };
+  const deleteBlog = async (id) => {
+    try {
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}blogs/${id}`, {
+        headers: { Authorization: `Token ${token}` },
+      });
+      toastSuccessNotify(`Silme işlemi başarılı`);
+      navigate(`/myblogs`);
+    } catch (error) {
+      toastErrorNotify("Silme işlemi başarısız oldu.");
+    }
+  };
 
   const getSingleBlog = async (id) => {
     try {
@@ -171,6 +182,7 @@ const useBlogCalls = () => {
     postBlog,
     getBlogsDraft,
     updateBlog,
+    deleteBlog,
   };
 };
 
