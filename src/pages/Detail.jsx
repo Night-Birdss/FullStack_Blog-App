@@ -23,18 +23,30 @@ const Detail = () => {
   const { singleblog, likes } = useSelector((state) => state.blog);
   const { id } = useParams(); // URL'den id parametresini alıyoruz
   const [showComments, setShowComments] = useState(false);
-
+  console.log(singleblog);
   //!MODAL YAPISI
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  
+  const initialState = {
+    categoryId:"",
+    title:"",
+    content: "",
+    image: "",
+    isPublish: "",
+  };
+  const [data, setData] = useState(initialState);
+  const [open, setOpen] = useState(false);
 
+  const handleOpen = () => {
+    setOpen(true)
+    setData(singleblog)
+  }
+  const handleClose = () => {
+    setOpen(false)
+    setData(initialState)
+    }
   const toggleComments = () => {
     setShowComments((prev) => !prev);
   };
-
-  console.log(singleblog);
-
   const handleLike = () => {
     if (likes.didUserLike) {
       // Beğeni kaldır
@@ -98,7 +110,7 @@ const Detail = () => {
           <Button onClick={() => handleOpen()}>Delete</Button>
         )}
 
-        <UpdateModal handleClose={handleClose} open={open} />
+        <UpdateModal open={open} data={data} setData={setData} handleClose={handleClose}/>
       </Box>
       <CardActions>
         <Button size="small" onClick={handleLike}>

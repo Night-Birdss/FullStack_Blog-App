@@ -9,23 +9,16 @@ import {
   Select,
   MenuItem,
   Modal,
+  Backdrop,
 } from "@mui/material";
 import useBlogCalls from "../../hooks/useBlogCalls";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 
-const UpdateModal = ({ handleClose, open }) => {
+const UpdateModal = ({open,data,setData,handleClose}) => {
   const { getCategories, updateBlog } = useBlogCalls();
   const { id } = useParams();
 
-  const initialState = {
-    categoryId: "",
-    title: "",
-    content: "",
-    image: "",
-    isPublish: true,
-  };
-  const [data, setData] = useState(initialState);
   const categories = useSelector((state) => state.blog.categories);
   useEffect(() => {
     getCategories();
@@ -41,6 +34,7 @@ const UpdateModal = ({ handleClose, open }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     updateBlog(id, data);
+    handleClose()
   };
 
   return (
@@ -51,7 +45,8 @@ const UpdateModal = ({ handleClose, open }) => {
       aria-describedby="modal-modal-description"
     >
       <Box
-        sx={{
+      
+          sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
