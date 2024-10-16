@@ -97,9 +97,8 @@ const Detail = () => {
         {singleblog.isPublish === false && (
           <Button onClick={() => handleOpen()}>Delete</Button>
         )}
-
-        <UpdateModal handleClose={handleClose} open={open} />
       </Box>
+      <UpdateModal handleClose={handleClose} open={open} />
       <CardActions>
         <Button size="small" onClick={handleLike}>
           {likes.didUserLike ? (

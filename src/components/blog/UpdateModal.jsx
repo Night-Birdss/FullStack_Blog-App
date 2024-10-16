@@ -13,6 +13,7 @@ import {
 import useBlogCalls from "../../hooks/useBlogCalls";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { Form } from "formik";
 
 const UpdateModal = ({ handleClose, open }) => {
   const { getCategories, updateBlog } = useBlogCalls();
@@ -43,6 +44,21 @@ const UpdateModal = ({ handleClose, open }) => {
     updateBlog(id, data);
   };
 
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+    display: "flex",
+    flexDirection: "column",
+    gap: 2,
+  };
+
   return (
     <Modal
       open={open}
@@ -50,30 +66,8 @@ const UpdateModal = ({ handleClose, open }) => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        <Box
-          sx={{
-            // position: "absolute",
-
-            borderRadius: "3%",
-            // top: "50%",
-            // left: "50%",
-            // transform: "translate(-50%, -50%)",
-            width: { xs: 280, md: 400 },
-            backgroundColor: "background.paper",
-            border: "0 solid #000",
-            boxShadow: 24,
-            p: 1,
-          }}
-        >
-          <h2>Update Blog</h2>
+      <Box>
+        <Box sx={style}>
           <Box
             sx={{ display: "flex", flexDirection: "column", gap: 1 }}
             component="form"
