@@ -34,7 +34,7 @@ const AppRouter = () => {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {/* <FooTer /> */}
+      <FooTer />
     </BrowserRouter>
   );
 };
