@@ -7,7 +7,7 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
-import { Box, Button, Modal } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useParams } from "react-router";
 import useBlogCalls from "../hooks/useBlogCalls";
 import CommentCard from "../components/blog/CommentCard";
@@ -23,27 +23,32 @@ const Detail = () => {
   const { singleblog, likes } = useSelector((state) => state.blog);
   const { id } = useParams(); // URL'den id parametresini alıyoruz
   const [showComments, setShowComments] = useState(false);
-  console.log(singleblog);
+
+  console.log(likes);
   //!MODAL YAPISI
-  
   const initialState = {
-    categoryId:"",
-    title:"",
+    categoryId: "",
+    title: "",
     content: "",
     image: "",
-    isPublish: "",
+    isPublish: true,
   };
-  const [data, setData] = useState(initialState);
-  const [open, setOpen] = useState(false);
 
+  const [open, setOpen] = React.useState(false);
+  const [data, setData] = useState(initialState);
   const handleOpen = () => {
-    setOpen(true)
-    setData(singleblog)
-  }
-  const handleClose = () => {
-    setOpen(false)
-    setData(initialState)
-    }
+    setData({
+      categoryId: singleblog.categoryId?._id,
+      title: singleblog.title,
+      content: singleblog.content,
+      image: singleblog.image,
+      isPublish: singleblog.isPublish,
+    });
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
+
+  
   const toggleComments = () => {
     setShowComments((prev) => !prev);
   };
@@ -109,9 +114,13 @@ const Detail = () => {
         {singleblog.isPublish === false && (
           <Button onClick={() => handleOpen()}>Delete</Button>
         )}
-
-        <UpdateModal open={open} data={data} setData={setData} handleClose={handleClose}/>
       </Box>
+      <UpdateModal
+        handleClose={handleClose}
+        open={open}
+        data={data}
+        setData={setData}
+      />
       <CardActions>
         <Button size="small" onClick={handleLike}>
           {likes.didUserLike ? (
