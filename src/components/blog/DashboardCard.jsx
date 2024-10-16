@@ -27,7 +27,12 @@ export default function DashboardCard({ blog }) {
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia component="img" alt="Porsche" height="140" image={blog.image} />
+      <CardMedia
+        component="img"
+        alt="Porsche"
+        height="140"
+        image={blog.image}
+      />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {blog.title}
@@ -55,8 +60,12 @@ export default function DashboardCard({ blog }) {
             <FavoriteIcon sx={{ color: liked ? "red" : "inherit" }} />
           </IconButton>
           {likeCount}
-          <ChatBubbleOutlineIcon />
-          <RemoveRedEyeIcon />
+          <IconButton>
+            <ChatBubbleOutlineIcon />
+          </IconButton>
+          <IconButton>
+            <RemoveRedEyeIcon />
+          </IconButton>
         </Box>
         <Button
           size="small"
