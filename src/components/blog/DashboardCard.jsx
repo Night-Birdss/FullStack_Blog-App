@@ -31,7 +31,7 @@ export default function DashboardCard({ blog }) {
   const formattedTime = dateObj.toLocaleTimeString();
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ width: 345 }}>
       <CardMedia
         component="img"
         alt="Porsche"
@@ -51,6 +51,7 @@ export default function DashboardCard({ blog }) {
             WebkitLineClamp: 3,
             overflow: "hidden",
             textOverflow: "ellipsis",
+            minHeight: "65px",
           }}
         >
           {blog.content}
