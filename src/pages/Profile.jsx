@@ -15,6 +15,7 @@ const Profile = () => {
         justifyContent: "center",
         m: "auto",
         my: "10rem",
+        minHeight: "51.3vh",
       }}
     >
       <CardMedia

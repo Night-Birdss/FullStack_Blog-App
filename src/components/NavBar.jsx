@@ -57,17 +57,27 @@ function NavBar(props) {
   };
 
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <HideOnScroll {...props}>
-    <Box sx={{ backgroundColor: "primary.main", height: "70px", px: "1rem" }}>
+    <Box
+      sx={{
+        backgroundColor: "primary.main",
+        height: "70px",
+        px: "1rem",
+        alignContent: "center",
+      }}
+    >
       <Box maxWidth="xxl">
         <Toolbar disableGutters>
           <CardMedia
             image="https://images.penguinrandomhouse.com/cover/9780593463291"
             sx={{
-              display: { xs: "none", md: "flex", height: 50, width: 70 },
+              display: {
+                xs: "none",
+                md: "flex",
+              },
               mr: 1,
+              borderRadius: "50%",
+              height: 70,
+              width: 70,
             }}
           />
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -145,7 +155,8 @@ function NavBar(props) {
           <CardMedia
             image="https://images.penguinrandomhouse.com/cover/9780593463291"
             sx={{
-              display: { xs: "flex", md: "none", height: 50, width: 70 },
+              display: { xs: "flex", md: "none", height: 70, width: 70 },
+              borderRadius: "50%",
               mr: 1,
             }}
           />

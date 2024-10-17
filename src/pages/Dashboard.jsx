@@ -8,9 +8,12 @@ import PaginationItem from "@mui/material/PaginationItem";
 import Stack from "@mui/material/Stack";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import Loading from "../components/Loading";
+import { NoDataMessage } from "../components/NoDataMessage";
+import { current } from "@reduxjs/toolkit";
 
 const Dashboard = () => {
-  const { blogs } = useSelector((state) => state.blog);
+  const { blogs, loading } = useSelector((state) => state.blog);
   const { getBlogs } = useBlogCalls();
 
   // Sayfa ve blog başına gösterilecek sayıyı ayarlamak için state tanımlamaları
@@ -35,38 +38,51 @@ const Dashboard = () => {
   const totalPages = Math.ceil(blogs?.length / blogsPerPage);
 
   return (
-    <div>
-      <Grid container justifyContent={"center"} gap={2} sx={{ mt: "2rem" }}>
-        {currentBlogs?.map((blog, index) => (
-          <Grid item key={index}>
-            <DashboardCard key={index} blog={blog} />
+    <>
+      {loading ? (
+        <Loading />
+      ) : currentBlogs.length > 0 ? (
+        <div>
+          <Grid
+            container
+            justifyContent={"center"}
+            gap={2}
+            sx={{ mt: "1rem", minHeight: "78.4vh" }}
+          >
+            {currentBlogs?.map((blog, index) => (
+              <Grid item key={index}>
+                <DashboardCard key={index} blog={blog} />
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
 
-      {/* Eğer bloglar yüklendiyse ve sayfa sayısı 1'den fazlaysa pagination göster */}
-      {totalPages > 1 && (
-        <Stack
-          spacing={2}
-          justifyContent="center"
-          alignItems="center"
-          marginTop={2}
-          marginBottom={2}
-        >
-          <Pagination
-            count={totalPages} // Toplam sayfa sayısı
-            page={currentPage}
-            onChange={handlePageChange}
-            renderItem={(item) => (
-              <PaginationItem
-                slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
-                {...item}
+          {/* Eğer bloglar yüklendiyse ve sayfa sayısı 1'den fazlaysa pagination göster */}
+          {totalPages > 1 && (
+            <Stack
+              spacing={2}
+              justifyContent="center"
+              alignItems="center"
+              marginTop={1}
+              marginBottom={1}
+            >
+              <Pagination
+                count={totalPages} // Toplam sayfa sayısı
+                page={currentPage}
+                onChange={handlePageChange}
+                renderItem={(item) => (
+                  <PaginationItem
+                    slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+                    {...item}
+                  />
+                )}
               />
-            )}
-          />
-        </Stack>
+            </Stack>
+          )}
+        </div>
+      ) : (
+        <NoDataMessage />
       )}
-    </div>
+    </>
   );
 };
 

@@ -13,16 +13,15 @@ import Grid from "@mui/material/Grid";
 
 const About = () => {
   return (
-    
-<Grid
-  container
-  direction="row"
-  sx={{
-    justifyContent: "center",
-    alignItems: "center",
-    height:"80vh"
-  }}
->
+    <Grid
+      container
+      direction="row"
+      sx={{
+        justifyContent: "center",
+        alignItems: "center",
+        height: "85.2vh",
+      }}
+    >
       <Card
         align="center"
         sx={{
@@ -46,11 +45,17 @@ const About = () => {
           </Typography>
           <Typography variant="h5">Non-stop Flying</Typography>
         </CardContent>
-        <CardActions sx={{gap:2}}>
-          <LinkedInIcon sx={{":hover":{ color: "blue", cursor: "pointer"}}} />
-          <TwitterIcon sx={{":hover":{ color: "blue", cursor: "pointer" }}}/>
-          <InstagramIcon sx={{":hover":{ color: "red", cursor: "pointer" }}}/>
-          <YouTubeIcon sx={{":hover":{ color: "red", cursor: "pointer" }}}/>
+        <CardActions sx={{ gap: 2 }}>
+          <LinkedInIcon
+            sx={{ ":hover": { color: "blue", cursor: "pointer" } }}
+          />
+          <TwitterIcon
+            sx={{ ":hover": { color: "blue", cursor: "pointer" } }}
+          />
+          <InstagramIcon
+            sx={{ ":hover": { color: "red", cursor: "pointer" } }}
+          />
+          <YouTubeIcon sx={{ ":hover": { color: "red", cursor: "pointer" } }} />
         </CardActions>
       </Card>
     </Grid>

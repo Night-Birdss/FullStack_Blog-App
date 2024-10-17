@@ -25,8 +25,13 @@ export default function DashboardCard({ blog }) {
     setLiked(!liked); // Like durumunu tersine çevir
   };
 
+  const isoDate = blog.createdAt;
+  const dateObj = new Date(isoDate);
+  const formattedDate = dateObj.toLocaleDateString();
+  const formattedTime = dateObj.toLocaleTimeString();
+
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ width: 345 }}>
       <CardMedia
         component="img"
         alt="Porsche"
@@ -46,12 +51,13 @@ export default function DashboardCard({ blog }) {
             WebkitLineClamp: 3,
             overflow: "hidden",
             textOverflow: "ellipsis",
+            minHeight: "65px",
           }}
         >
           {blog.content}
         </Typography>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          Published Date : {blog.isPublish}
+          Published Date : {`${formattedDate} ${formattedTime}`}
         </Typography>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>

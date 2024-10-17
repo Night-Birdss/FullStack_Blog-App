@@ -4,10 +4,12 @@ import { Grid } from "@mui/material";
 import { useSelector } from "react-redux";
 import useBlogCalls from "../../hooks/useBlogCalls";
 import DashboardCard from "./DashboardCard";
+import Loading from "../Loading";
+import { NoDataMessage } from "../NoDataMessage";
 
 const MyBlog = () => {
   const { getBlogsDraft } = useBlogCalls();
-  const { blogs } = useSelector((state) => state.blog);
+  const { blogs, loading } = useSelector((state) => state.blog);
 
   const userId = useSelector((state) => state.auth.id);
 
@@ -22,15 +24,28 @@ const MyBlog = () => {
   }
 
   return (
-    <div>
-      <Grid container justifyContent={"center"} gap={2} sx={{ my: "3rem" }}>
-        {draftBlogs?.map((blog, index) => (
-          <Grid item key={index}>
-            <DashboardCard key={index} blog={blog} />
+    <>
+      {loading ? (
+        <Loading />
+      ) : draftBlogs.length > 0 ? (
+        <div>
+          <Grid
+            container
+            justifyContent={"center"}
+            gap={2}
+            sx={{ my: "3rem", minHeight: "75vh" }}
+          >
+            {draftBlogs?.map((blog, index) => (
+              <Grid item key={index}>
+                <DashboardCard key={index} blog={blog} />
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
-    </div>
+        </div>
+      ) : (
+        <NoDataMessage />
+      )}
+    </>
   );
 };
 
