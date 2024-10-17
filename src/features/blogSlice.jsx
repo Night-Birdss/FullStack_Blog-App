@@ -20,23 +20,36 @@ export const blogSlice = createSlice({
   //     "isPublish": true
   //   }
   reducers: {
+    fetchStart: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    fetchFail: (state) => {
+      state.loading = false;
+      state.error = true;
+    },
     getCategorySuccess: (state, { payload }) => {
-      // console.log(payload)
+      state.loading = false;
       state.categories = payload.data;
     },
     getStatusSuccess: (state, { payload }) => {
+      state.loading = false;
       state.status = payload.isPublish;
     },
     getBlogSuccess: (state, { payload }) => {
+      state.loading = false;
       state.blogs = payload.data;
     },
     getSingleBlogSuccess: (state, { payload }) => {
+      state.loading = false;
       state.singleblog = payload.data;
     },
     getCommentsSuccess: (state, { payload }) => {
+      state.loading = false;
       state.comments = payload.data;
     },
     getLikesSuccess: (state, { payload }) => {
+      state.loading = false;
       state.likes = payload.data;
     },
   },
@@ -48,5 +61,7 @@ export const {
   getSingleBlogSuccess,
   getCommentsSuccess,
   getLikesSuccess,
+  fetchStart,
+  fetchFail,
 } = blogSlice.actions;
 export default blogSlice.reducer;

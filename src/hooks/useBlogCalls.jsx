@@ -6,6 +6,8 @@ import {
   getLikesSuccess,
   getCategorySuccess,
   getBlogSuccess,
+  fetchStart,
+  fetchFail,
 } from "../features/blogSlice";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import { useNavigate } from "react-router";
@@ -16,13 +18,14 @@ const useBlogCalls = () => {
   const dispatch = useDispatch();
 
   const getBlogs = async () => {
+    dispatch(fetchStart());
     try {
       const { data } = await axios(`${process.env.REACT_APP_BASE_URL}blogs/`, {
         headers: { Authorization: `Token ${token}` },
       });
       dispatch(getBlogSuccess({ data: data.data }));
     } catch (error) {
-      console.log(error);
+      dispatch(fetchFail());
     }
   };
 
