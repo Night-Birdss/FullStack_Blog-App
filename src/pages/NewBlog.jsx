@@ -49,6 +49,7 @@ const NewBlog = () => {
         margin: "2rem",
         justifyContent: "center",
         alignItems: "center",
+        minHeight: "78vh",
       }}
     >
       <Box

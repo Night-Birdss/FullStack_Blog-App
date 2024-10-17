@@ -37,7 +37,14 @@ function NavBar() {
   };
 
   return (
-    <Box sx={{ backgroundColor: "primary.main", height: "70px", px: "1rem" }}>
+    <Box
+      sx={{
+        backgroundColor: "primary.main",
+        height: "70px",
+        px: "1rem",
+        alignContent: "center",
+      }}
+    >
       <Box maxWidth="xxl">
         <Toolbar disableGutters>
           <CardMedia
@@ -123,6 +130,7 @@ function NavBar() {
             image="https://images.penguinrandomhouse.com/cover/9780593463291"
             sx={{
               display: { xs: "flex", md: "none", height: 50, width: 70 },
+
               mr: 1,
             }}
           />
