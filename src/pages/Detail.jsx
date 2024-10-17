@@ -49,7 +49,6 @@ const Detail = () => {
   };
   const handleClose = () => setOpen(false);
 
-  
   const toggleComments = () => {
     setShowComments((prev) => !prev);
   };
@@ -84,7 +83,9 @@ const Detail = () => {
   const formattedTime = dateObj.toLocaleTimeString();
 
   return (
-    <Card sx={{ maxWidth: "1000px", m: "auto" }}>
+    <Card
+      sx={{ maxWidth: "1000px", m: "auto", my: "2rem", minHeight: "78.4vh" }}
+    >
       <CardMedia
         component="img"
         alt="Blog görseli"
