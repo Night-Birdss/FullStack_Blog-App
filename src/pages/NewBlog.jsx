@@ -43,6 +43,8 @@ const NewBlog = () => {
   };
 
   return (
+    <>
+    <Box sx={{height:"5rem"}}></Box>
     <Box
       sx={{
         display: "flex",
@@ -57,6 +59,9 @@ const NewBlog = () => {
           flexDirection: "column",
           gap: 1,
           width: "400px",
+          border:"1px solid gray",
+          p:1,
+          boxShadow:"0 0 50px"
         }}
         component="form"
         onSubmit={handleSubmit}
@@ -132,7 +137,7 @@ const NewBlog = () => {
           NEW BLOG
         </Button>
       </Box>
-    </Box>
+    </Box></>
   );
 };
 
