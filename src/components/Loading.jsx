@@ -9,7 +9,7 @@ const Loading = () => {
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
-        height: "60vh",
+        height: "85.2vh",
       }}
     >
       <img src={LoadingGif} style={{ width: "200px" }} />

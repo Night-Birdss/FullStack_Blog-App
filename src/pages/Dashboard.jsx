@@ -9,6 +9,8 @@ import Stack from "@mui/material/Stack";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Loading from "../components/Loading";
+import { NoDataMessage } from "../components/NoDataMessage";
+import { current } from "@reduxjs/toolkit";
 
 const Dashboard = () => {
   const { blogs, loading } = useSelector((state) => state.blog);
@@ -39,7 +41,7 @@ const Dashboard = () => {
     <>
       {loading ? (
         <Loading />
-      ) : (
+      ) : currentBlogs.length > 0 ? (
         <div>
           <Grid
             container
@@ -77,6 +79,8 @@ const Dashboard = () => {
             </Stack>
           )}
         </div>
+      ) : (
+        <NoDataMessage />
       )}
     </>
   );

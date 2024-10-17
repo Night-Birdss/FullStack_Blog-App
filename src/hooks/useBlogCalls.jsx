@@ -30,6 +30,7 @@ const useBlogCalls = () => {
   };
 
   const getBlogsDraft = async (id) => {
+    dispatch(fetchStart());
     try {
       const { data } = await axios(
         `${process.env.REACT_APP_BASE_URL}blogs/?author=${id}`,
@@ -39,7 +40,7 @@ const useBlogCalls = () => {
       );
       dispatch(getBlogSuccess({ data: data.data }));
     } catch (error) {
-      console.log(error);
+      dispatch(fetchFail());
     }
   };
 
@@ -96,6 +97,7 @@ const useBlogCalls = () => {
   };
 
   const getSingleBlog = async (id) => {
+    dispatch(fetchStart());
     try {
       const { data } = await axios(
         `${process.env.REACT_APP_BASE_URL}blogs/${id}`,
@@ -105,7 +107,7 @@ const useBlogCalls = () => {
       );
       dispatch(getSingleBlogSuccess({ data: data.data }));
     } catch (error) {
-      console.log(error);
+      dispatch(fetchFail());
     }
   };
 

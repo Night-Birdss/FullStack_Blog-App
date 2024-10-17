@@ -21,7 +21,7 @@ import UpdateModal from "../components/blog/UpdateModal";
 const Detail = () => {
   const { getSingleBlog, getComments, getLikes, postLike, deleteBlog } =
     useBlogCalls();
-  const { singleblog, likes } = useSelector((state) => state.blog);
+  const { singleblog, likes, loading } = useSelector((state) => state.blog);
   const { id } = useParams(); // URL'den id parametresini alıyoruz
   const [showComments, setShowComments] = useState(false);
 
