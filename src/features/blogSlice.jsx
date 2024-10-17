@@ -12,13 +12,7 @@ export const blogSlice = createSlice({
     loading: false,
     error: false,
   },
-  //   {
-  //     "categoryId": "65343222b67e9681f937f101",
-  //     "title": "Blog Title 1",
-  //     "content": "Blog Content 1",
-  //     "image": "http://imageURL",
-  //     "isPublish": true
-  //   }
+
   reducers: {
     fetchStart: (state) => {
       state.loading = true;
