@@ -13,28 +13,10 @@ import { CardMedia } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useAuthCalls from "../hooks/useAuthCalls";
-import useScrollTrigger from '@mui/material/useScrollTrigger';
-import Slide from '@mui/material/Slide';
-import PropTypes from 'prop-types';
-import CssBaseline from '@mui/material/CssBaseline';
-function HideOnScroll(props) {
-  const { children, window } = props;
-  const trigger = useScrollTrigger({
-    target: window ? window() : undefined,
-  });
 
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children ?? <div />}
-    </Slide>
-  );
-}
 
-HideOnScroll.propTypes = {
-  children: PropTypes.element,
-  window: PropTypes.func,
-};
-function NavBar(props) {
+
+function NavBar() {
   const { logout } = useAuthCalls();
 
   const currentUser = useSelector((state) => state.auth.username);
@@ -149,7 +131,6 @@ function NavBar(props) {
                   </Link>
                 </Button>
               </MenuItem>
-              {/* ))} */}
             </Menu>
           </Box>
           <CardMedia
@@ -269,8 +250,6 @@ function NavBar(props) {
         </Toolbar>
       </Box>
     </Box>
-    </HideOnScroll>
-    </React.Fragment>
-  );
+  )
 }
 export default NavBar;
