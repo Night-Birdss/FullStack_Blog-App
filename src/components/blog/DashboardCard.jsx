@@ -25,6 +25,11 @@ export default function DashboardCard({ blog }) {
     setLiked(!liked); // Like durumunu tersine çevir
   };
 
+  const isoDate = blog.createdAt;
+  const dateObj = new Date(isoDate);
+  const formattedDate = dateObj.toLocaleDateString();
+  const formattedTime = dateObj.toLocaleTimeString();
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -51,7 +56,7 @@ export default function DashboardCard({ blog }) {
           {blog.content}
         </Typography>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          Published Date : {blog.isPublish}
+          Published Date : {`${formattedDate} ${formattedTime}`}
         </Typography>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
