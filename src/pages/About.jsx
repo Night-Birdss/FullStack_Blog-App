@@ -13,52 +13,38 @@ import Grid from "@mui/material/Grid";
 
 const About = () => {
   return (
-    <Grid
-      container
-      direction="row"
+    <Card
+      align="center"
       sx={{
+        width: "100%",
+        height: 500,
+        display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        height: "85.2vh",
+        margin: "auto",
+        minHeight: "85.2vh",
+        border: "none",
       }}
     >
-      <Card
-        align="center"
-        sx={{
-          width: 450,
-          height: 500,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          margin: "auto",
-        }}
-      >
-        <CardMedia
-          sx={{ height: 100, width: 100 }}
-          image="https://images.penguinrandomhouse.com/cover/9780593463291"
-          title="night birds"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h3">
-            Night Birds
-          </Typography>
-          <Typography variant="h5">Non-stop Flying</Typography>
-        </CardContent>
-        <CardActions sx={{ gap: 2 }}>
-          <LinkedInIcon
-            sx={{ ":hover": { color: "blue", cursor: "pointer" } }}
-          />
-          <TwitterIcon
-            sx={{ ":hover": { color: "blue", cursor: "pointer" } }}
-          />
-          <InstagramIcon
-            sx={{ ":hover": { color: "red", cursor: "pointer" } }}
-          />
-          <YouTubeIcon sx={{ ":hover": { color: "red", cursor: "pointer" } }} />
-        </CardActions>
-      </Card>
-    </Grid>
+      <CardMedia
+        sx={{ height: 100, width: 100 }}
+        image="https://images.penguinrandomhouse.com/cover/9780593463291"
+        title="night birds"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h3">
+          Night Birds
+        </Typography>
+        <Typography variant="h5">Non-stop Flying</Typography>
+      </CardContent>
+      <CardActions sx={{ gap: 2 }}>
+        <LinkedInIcon sx={{ ":hover": { color: "blue", cursor: "pointer" } }} />
+        <TwitterIcon sx={{ ":hover": { color: "blue", cursor: "pointer" } }} />
+        <InstagramIcon sx={{ ":hover": { color: "red", cursor: "pointer" } }} />
+        <YouTubeIcon sx={{ ":hover": { color: "red", cursor: "pointer" } }} />
+      </CardActions>
+    </Card>
   );
 };
 
