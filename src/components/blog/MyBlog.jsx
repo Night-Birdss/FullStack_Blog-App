@@ -23,7 +23,12 @@ const MyBlog = () => {
 
   return (
     <div>
-      <Grid container justifyContent={"center"} gap={2} sx={{ my: "3rem" }}>
+      <Grid
+        container
+        justifyContent={"center"}
+        gap={2}
+        sx={{ my: "3rem", minHeight: "75vh" }}
+      >
         {draftBlogs?.map((blog, index) => (
           <Grid item key={index}>
             <DashboardCard key={index} blog={blog} />
