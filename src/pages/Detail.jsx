@@ -85,7 +85,7 @@ const Detail = () => {
             maxWidth: "1000px",
             m: "auto",
             my: "2rem",
-            minHeight: "78.4vh",
+            minHeight: "84.4vh",
           }}
         >
           <CardMedia

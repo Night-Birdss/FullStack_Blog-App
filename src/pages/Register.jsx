@@ -16,7 +16,7 @@ const Register = () => {
         direction="row-reverse"
         rowSpacing={{ sm: 3 }}
         sx={{
-          minHeight: "87.7vh",
+          minHeight: "91.1vh",
           p: 2,
         }}
       >

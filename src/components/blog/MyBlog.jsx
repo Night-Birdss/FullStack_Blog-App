@@ -33,7 +33,7 @@ const MyBlog = () => {
             container
             justifyContent={"center"}
             gap={2}
-            sx={{ my: "3rem", minHeight: "75vh" }}
+            sx={{ my: "3rem", minHeight: "81.9vh" }}
           >
             {draftBlogs?.map((blog, index) => (
               <Grid item key={index}>

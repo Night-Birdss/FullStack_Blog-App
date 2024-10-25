@@ -23,7 +23,7 @@ const About = () => {
         justifyContent: "center",
         alignItems: "center",
         margin: "auto",
-        minHeight: "85.2vh",
+        minHeight: "89.3vh",
         border: "none",
       }}
     >

@@ -30,7 +30,7 @@ const Dashboard = () => {
   const currentBlogs = blogs?.slice(indexOfFirstBlog, indexOfLastBlog);
 
   // Sayfa değiştirme fonksiyonu
-  const handlePageChange = (event, value) => {
+  const handlePageChange = (value) => {
     setCurrentPage(value);
   };
 
@@ -47,7 +47,7 @@ const Dashboard = () => {
             container
             justifyContent={"center"}
             gap={2}
-            sx={{ mt: "1rem", minHeight: "78.4vh" }}
+            sx={{ mt: "1rem", minHeight: "84.4vh" }}
           >
             {currentBlogs?.map((blog, index) => (
               <Grid item key={index}>

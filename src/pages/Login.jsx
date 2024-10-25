@@ -5,7 +5,7 @@ import LoginForm from "../components/auth/LoginForm";
 import { Link } from "react-router-dom";
 const Login = () => {
   return (
-    <Container maxWidth="lg" sx={{ minHeight: "76.7vh" }}>
+    <Container maxWidth="lg" sx={{ minHeight: "83.1vh" }}>
       <Grid
         container
         justifyContent="center"
