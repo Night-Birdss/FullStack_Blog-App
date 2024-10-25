@@ -6,10 +6,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import RegisterForm from "../components/auth/RegisterForm";
 
-
 const Register = () => {
- 
-
   return (
     <Container maxWidth="lg">
       <Grid
@@ -19,7 +16,7 @@ const Register = () => {
         direction="row-reverse"
         rowSpacing={{ sm: 3 }}
         sx={{
-          height: "100vh",
+          minHeight: "87.7vh",
           p: 2,
         }}
       >

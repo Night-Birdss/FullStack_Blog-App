@@ -14,7 +14,8 @@ const Profile = () => {
         alignItems: "center",
         justifyContent: "center",
         m: "auto",
-        mt: "10rem",
+        my: "10rem",
+        minHeight: "51.3vh",
       }}
     >
       <CardMedia

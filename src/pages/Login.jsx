@@ -5,14 +5,14 @@ import LoginForm from "../components/auth/LoginForm";
 import { Link } from "react-router-dom";
 const Login = () => {
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{ minHeight: "76.7vh" }}>
       <Grid
         container
         justifyContent="center"
         direction="row-reverse"
         alignItems="center"
         sx={{
-          height: "100vh",
+          my: "5rem",
           p: 2,
         }}
       >
